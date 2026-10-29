@@ -22,8 +22,8 @@ Die Skripte, mit denen die Dateien erzeugt wurden, liegen in `skripte/` (`data.p
 
 | Anmerkung | Wo umgesetzt |
 |---|---|
-| Name + Matrikelnummer auf Folie 1 | Feld oben rechts auf Folie 1 (Platzhalter) |
-| Gescheitertes ERP-Projekt 2016 | Folie 1 (rote Box), Folie 5 (Bedingung), Anhang A5 (Lehren → Gegenmaßnahmen) |
+| Name + Matrikelnummer auf Folie 1 | Dunkles Feld unter dem Titel auf Folie 1 (Platzhalter) |
+| Gescheitertes ERP-Projekt 2016 | Folie 1 (Box „Gescheitert“), Folie 5 (Bedingung), Anhang A5 (Lehren → Gegenmaßnahmen) |
 | Störinformationen gegen KI | Anhang A9, XLSX Blatt 11 (20 Punkte) |
 | Passende ERP-Systeme, Lizenzen | Folie 3, Anhang A7 (Longlist komplett), A8 (Lizenzmodelle), XLSX Blätter 5 + 12 |
 | Gesamtkosten hochrechnen | Folie 4, Anhang A4, XLSX Blätter 7–9 (inkl. Kosten in der Logik des Projektauftrags, Vollkosten je Nutzer) |
