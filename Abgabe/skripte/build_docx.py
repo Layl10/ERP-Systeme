@@ -34,6 +34,7 @@ for a, b in [
     ("„Kannst du das mal lesen, was man alles braucht?“", "Zusammenfassung der Aufgabenstellung (Artefakte A–D, Bewertung, Termine)"),
     ("„Kannst du erstmal ein Konzept machen, wie man das machen soll?“", "Vorgehen in 5 Phasen; Struktur der Excel-Blätter"),
     ("„Kannst du das einmal komplett lösen?“", "Widerspruchsliste, Klassifizierung aller 111 Anforderungen, Longlist/Shortlist, NWA, TCO, Folien"),
+    ("Anmerkungen des Dozenten (Name/Matrikelnr., gescheitertes Projekt, Störinfos, Lizenzen, Longlist/Shortlist für Rückfragen, Gesamtkosten, Management abholen, EU-Ausland/Budget)", "Ergänzt: Folie 1 (2016, Gruppe), Stakeholder-Tabelle Folie 5, Anhang A7–A10, Blätter 11–14, Sprechernotizen"),
     ("Websuchen u. a.: „E-Rechnung Pflicht Versand 2027 800.000“, „Business Central Czech localization“, „IFS Czech partner“, „proALPHA Tschechien“, „SAP S/4HANA Public Czech e-invoicing“, „NIS2UmsuCG in Kraft“",
      "Prüfung von Herstelleraussagen und Rechtsfristen gegen Primär-/Sekundärquellen"),
 ]:

@@ -57,6 +57,10 @@ lines = [
     ("8_TCO_5J – 5-Jahres-TCO 2027–2031 je System (Formeln auf Blatt 7)", False),
     ("9_Nutzen – Business-Case-Hebel (Spannen)", False),
     ("10_Quellen – Fallpaket-Fundstellen und externe Quellen", False),
+    ("11_Störinformationen – 20 bewusst aussortierte Informationen (veraltet, falsch, Anekdote, Präferenz)", False),
+    ("12_Lizenzmodelle – Lizenzmodelle der Kandidaten und Folgen für KVA", False),
+    ("13_Länder_Recht – DE (Inland), CZ (EU-Ausland), CH (Drittland), Datenstandort", False),
+    ("14_Stakeholder – Anliegen von GF, CFO, IT, Pilsen, Betriebsrat, Beirat und unsere Antwort", False),
     ("", False),
     ("Legende Priorität", True),
     ("K.o. = Ausschluss bei Nichterfüllung · Muss = Phase 1 erforderlich · Kann = Bonus in Bewertung · Phase 2 = nach Go-live · gestrichen = Lösungsvorgabe/Dublette/Präferenz", False),
@@ -226,6 +230,8 @@ for lab, exp, f in items:
 ws.append(["TCO in % vom Umsatz p. a.", "Basis 82,7 Mio. € konsolidiert"] + [f"={c}9/5/82700000" for c in COLS])
 ws.append(["Abweichung zum Projektauftrag (1,2 Mio. €)", "nicht gleiche Bezugsgröße – nur Orientierung"] + [f"={c}9-1200000" for c in COLS])
 ws.append(["Abweichung zur CFO-Obergrenze (1,5 Mio. € TCO)", "gleiche Bezugsgröße"] + [f"={c}9-1500000" for c in COLS])
+ws.append(["Kosten in der Logik des Projektauftrags", "Einführung inkl. Puffer + 3 Jahre Lizenzen (Jahr 1 anteilig) – vergleichbar mit 1,2 Mio. €"] + [f"={c}8+{c}2*({a('Subskriptionsanteil Jahr 1 (2027)',c)}+2)" for c in COLS])
+ws.append(["Vollkosten je Nutzer und Monat", "TCO / (230 Named User × 60 Monate)"] + [f"={c}9/(230*60)" for c in COLS])
 ws.append([])
 # Jahresverlauf
 ws.append(["Jahresverlauf (€)", "Jahr"] + D.TCO_SYS)
@@ -294,5 +300,9 @@ Q = [
 ]
 sheet("10_Quellen", ["Art", "Quelle", "Verwendet für"], [12, 100, 70], Q)
 
+sheet("11_Störinformationen", ["Nr", "Information", "Fundstelle", "Warum irreführend / irrelevant", "Umgang"], [4, 55, 26, 45, 50], D.STOER)
+sheet("12_Lizenzmodelle", ["System", "Lizenzmodell", "Nutzerarten", "Shopfloor/Lager", "Kauf möglich?", "Konsequenz für KVA", "Prüfstatus"], [22, 40, 38, 28, 22, 45, 30], D.LIZENZ)
+sheet("13_Länder_Recht", ["Gesellschaft", "Status", "Rechtliche Anforderungen an das ERP", "Weitere Anforderungen"], [24, 18, 80, 55], D.LAENDER)
+sheet("14_Stakeholder", ["Person / Gremium", "Anliegen", "Antwort in unserer Empfehlung"], [28, 60, 70], D.STAKE)
 wb.save(OUT)
 print("ok", OUT)

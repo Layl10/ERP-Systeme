@@ -564,3 +564,76 @@ NUTZEN = [  # Hebel, Wert p. a. (min, max) in T€, Quelle, Bemerkung
     ("Rückrufrisiko eingrenzen (Fall 2024: 180 T€)", 30, 60, "Int. 10 Rieger", "Erwartungswert"),
     ("Salesforce-Ablösung ab 2028 (optional)", 0, 68, "IT-Historie: 68 T€/Jahr", "nur bei Variante ERP-CRM"),
 ]
+
+# ---------------------------------------------------------------- Störinformationen (bewusst aussortiert)
+# (Nr, Information, Fundstelle, Warum irreführend / irrelevant, Umgang)
+STOER = [
+    (1, "Lastenheft 2015: Zahlen (220 MA, 31.000 Artikel, Pilsen 25 MA), Ziel SAP ERP 6.0", "02_Projekt/Lastenheft v0.7", "11 Jahre alt, nie freigegeben, Mengengerüst und Organisation überholt", "Nur fachliche Ideen übernommen (Phantombaugruppen, Meilensteinfaktura); keine Zahl verwendet"),
+    (2, "Anekdoten: Freund „mit Business Central super zufrieden“, anderer „schlecht mit S/4 Cloud“", "Interview 01 Kessler", "Einzelmeinungen ohne Bezug zu KVA-Prozessen", "Nicht in Bewertung; stattdessen Referenzbesuche bei vergleichbaren Variantenfertigern"),
+    (3, "Anbieter „von der Messe, nur Mittelstand, Süddeutschland“ – Name unbekannt", "Interview 02 Vogt", "Nicht prüfbar, persönliche Präferenz (T-011)", "Gestrichen; regionale Partnernähe steckt im Kriterium Partner DE"),
+    (4, "Anonyme Karte „kein SAP“", "Flipchart 2", "Stimmungsbild, keine Anforderung", "Nur als Akzeptanzrisiko gewertet, nicht als Ausschlussgrund allein"),
+    (5, "„ERP mit integrierter KI, die Anfragen automatisch beantwortet“", "Interview 01 / A-007", "Unkonkret, löst kein Kernproblem", "Kann; nur als Roadmap-Aspekt"),
+    (6, "Konfigurator offline auf dem iPad mit 3D-Modell beim Kunden", "Interview 05 Moser / V-002", "Lösungswunsch; 3D liegt im CAD; erhöht K.o.-Risiko", "Phase 2; Muss ist nur ein integriertes Regelwerk"),
+    (7, "Oberfläche Rumänisch/Türkisch für 2 Lagermitarbeiter", "Interview 08 Hummel", "Randfall", "Kann; Piktogramm-/Scanner-Apps"),
+    (8, "„30.000 Standardgetriebe pro Jahr“", "Interview 08 Hummel", "Zahl unplausibel (Produktion: 22.000)", "Planwert 22.000"),
+    (9, "Wehrtechnik-Kunde: „Daten bei Amazon = Problem“ – „von einem Kunden gehört“", "Interview 02 Vogt", "Kein Dokument; Mail Brenner 21.01.: aktuell keine Vorgabe", "Mögliche künftige Anforderung (Kann), nicht K.o."),
+    (10, "„Sehr günstiges tschechisches ERP“ einer Schwesterfirma", "Interview 11", "Nováková empfiehlt es selbst nicht für die Gruppe", "Nicht berücksichtigt (HELIOS als Vertreter in Longlist)"),
+    (11, "Schnelles separates Cloud-ERP für Pilsen als 6-Monats-Brücke", "Interview 11 Dvořák", "Doppelmigration, neue Insel", "Abgelehnt; Pilsen als Pilot auf Ziel-ERP"),
+    (12, "Liefertreue 71 %", "Controlling / Folien", "Gemessen gegen letzten bestätigten Termin = geschönt", "58 % als Ausgangswert"),
+    (13, "Umsatz 86,4 Mio. €", "Unternehmensprofil", "Summe der Einzelabschlüsse, nicht konsolidiert", "82,7 Mio. € für Kennzahlen"),
+    (14, "„Alle 340 Listen müssen verfügbar sein“", "Lastenheft 2015 / A-010", "Nur ca. 40 genutzt; war 2016 unerfüllbar", "Top-40 nach Nutzungsstatistik"),
+    (15, "„10 Jahre Historie im neuen System“", "A-009 Vertrieb mündlich", "Teuer, schlechte Datenqualität, kein Nutzen im Tagesgeschäft", "Archiv statt Migration"),
+    (16, "Modernisierung RPG→Java für 300–400 T€", "Interview 02 / Mail Vogt", "Kein Angebot vorliegend; löst Funktionslücken nicht", "Als Option 0 fair geprüft und verworfen"),
+    (17, "Einsparung Einkaufsbündelung 300–500 T€ p. a.", "Interview 07 Frick", "Unbelegte Eigenschätzung", "Im Business Case halbiert"),
+    (18, "LkSG „ab 1.000 MA, noch nicht relevant“, CO₂-Fußabdruck, IoT/Predictive Maintenance", "Interview 07, 09", "Für die Systemauswahl Phase 1 nicht entscheidend", "Kann/Phase 2; nur offene API gefordert"),
+    (19, "Umbau Organigramm 01.07.2026 (AV + Produktion)", "Organigramm", "Ohne Einfluss auf Systemauswahl", "Nicht berücksichtigt"),
+    (20, "„Nehmen Sie, was die Produktion versteht. Die Buchhaltung kommt mit allem klar.“", "Interview 04 Brugger", "Meinung; Finanzen/Konsolidierung sind K.o.-relevant", "Nicht als Kriterium übernommen"),
+]
+
+# ---------------------------------------------------------------- Lizenzmodelle
+# (System, Lizenzmodell, Nutzerarten, Shopfloor/Lager, Kauf möglich?, Konsequenz KVA, Prüfstatus)
+LIZENZ = [
+    ("Business Central", "Subskription pro Named User/Monat (SaaS); On-Prem/Hosting über Partner", "Essentials, Premium (nötig für Fertigung + Service), Team Member (lesen/leicht ändern)", "Device-Lizenz für geteilte Geräte (Tablets, Terminals)", "On-Prem-Lizenzierung über Partner – Konditionen prüfen", "120 Premium + 110 Team Member + 30 Devices; Branchen-Apps meist zusätzlich pro User/Monat", "BC-Preise USD verifiziert; Add-ons im RFP"),
+    ("Asseco APplus", "Kauflizenz + jährliche Wartung ODER Subskription (Cloud/Hybrid)", "projektspezifisch", "im RFP abfragen", "ja", "Passt zu Vogt („keine Miete auf Lebenszeit“) und zur Cloud-Präferenz der CFO", "lt. erp-software.org; keine öffentliche Preisliste"),
+    ("IFS Cloud", "Subskription (auch bei kundenbetriebenem Betrieb)", "Vollnutzer / eingeschränkte Nutzer", "im RFP abfragen", "im RFP klären", "Höchste laufende Kosten; Mindestabnahmen prüfen", "ANNAHME – im RFP validieren"),
+    ("SAP S/4HANA Cloud Public", "Subskription nach Full Usage Equivalents (FUE)", "FUE-gewichtet nach Nutzungsart", "über FUE-Gewichtung", "nein", "nur SaaS → kein Plan B", "Einschätzung"),
+    ("D365 Finance + SCM", "Subskription pro User, Mindestmenge Volllizenzen", "Full, Activity, Team Member", "Device-Lizenzen", "nein", "Mindestmengen/Preisniveau über Rahmen", "Einschätzung"),
+    ("Option 0 KVA-WARE", "keine Lizenz, aber Dienstleistervertrag + IBM-Leasing bis 06/2029", "–", "Kaba-BDE (Ersatz nötig)", "–", "Kosten verlagern sich auf Dienstleister", "Fallpaket"),
+]
+
+# ---------------------------------------------------------------- Länder & Rechtsrahmen
+LAENDER = [
+    ("Deutschland (Singen)", "Inland", "GoBD + Verfahrensdoku, HGB (IFRS künftig Kann), E-Rechnung Versand ab 01.01.2027, NIS2, BetrVG § 87/90, Exportkontrolle (BAFA, Dual-Use)", "EUR, DATEV-Lohn-Schnittstelle, ELO-Archiv"),
+    ("Tschechien (Plzeň)", "EU-Ausland", "Kontrollmeldung (kontrolní hlášení), Intrastat, Zusammenfassende Meldung/VIES, CZ-Rechnungslegung, steuerfreie innergemeinschaftliche Lieferung, Verrechnungspreise IC", "CZK, Oberfläche + Belege Tschechisch, lokaler Lohn-Dienstleister, CZ-sprachiger Partner"),
+    ("Schweiz (Kreuzlingen)", "Drittland (nicht EU)", "Zoll: Ausfuhranmeldung (ATLAS) + Ursprungsnachweise für jede Lieferung, MWST CH, QR-Rechnung, Datenschutz revDSG", "CHF, Bexio ablösen, Servicetechniker CH in Phase 1b"),
+    ("Datenstandort / Anbieter", "EU vs. USA", "EU-Rechenzentrum + AVV; bei US-Anbietern CLOUD Act als Restrisiko (Brenner, BR); Option Datenhaltung DE für Wehrtechnik abfragen", "BC: Azure EU-Region + Plan B Hosting DE; APplus DE; IFS EU (SE)"),
+]
+
+# ---------------------------------------------------------------- Stakeholder „abholen“
+STAKE = [
+    ("Dr. Martina Kessler (CEO)", "Transparenz, ein System, Standard, planbare Kosten, „< 1 Mio.“", "Standard + Power BI mobil, Subskription; ehrlicher TCO statt Wunschbudget"),
+    ("Werner Vogt (GF Technik)", "Konfigurator = Herzstück, Produktion darf nie stehen, keine Miete, kein zweites 2016", "Konfigurator-PoC mit SEINEM Baukasten vor Vertrag; Offline-Puffer + 2. Leitung; Option 0 fair geprüft"),
+    ("Sabine Haller (CFO)", "Abschluss 5 AT, Konsolidierung ab Go-live, 5-J.-TCO", "Mandanten/IC ab Pilsen-Pilot, ihre TCO-Methode übernommen"),
+    ("Markus Brenner (IT)", "Cloud nur mit Plan B, 1,5 FTE, Pilsen nicht parallel", "Gleiche Software hostbar, sequenziell, Partner-Betrieb"),
+    ("Elena Nováková (Pilsen)", "„We cannot wait until 2029“, CZ-Oberfläche", "Pilsen zuerst (10/2027), CZ-Lokalisierung von Microsoft"),
+    ("Jürgen Kolb (Betriebsrat)", "BV vor Vertrag, keine Leistungskontrolle", "Rahmen-BV vor Unterschrift, Rückmeldung je Arbeitsplatz, BR in Demos"),
+    ("Beirat", "≥ 3 Alternativen, Kosten, Zeitplan, Risiken", "3 Kandidaten + Option 0, TCO, Roadmap, Risikoliste"),
+]
+
+# ---------------------------------------------------------------- Sprechernotizen
+NOTES = {
+    1: "Einstieg (ca. 2 Min.): Frau Dr. Kessler, Herr Vogt, Frau Haller, Herr Brenner – Sie haben uns gebeten, die Vorauswahl vorzubereiten. "
+       "Zuerst: Warum jetzt? Fünf Fristen bis Ende 2027 – die wichtigste ist der Ruhestand von Herrn Brugger. Neu für Sie: Die E-Rechnung muss KVA schon ab 01.01.2027 versenden, nicht erst 2028. "
+       "Und wir sagen offen: 2016 sind 940 T€ ohne Ergebnis geblieben – unser Vorschlag ist so gebaut, dass sich diese Fehler nicht wiederholen.",
+    2: "Anforderungen (ca. 2 Min.): Wir haben alle 111 Wünsche sortiert. Nur 8 sind K.o. – das sind die Dinge, ohne die KVA nicht arbeiten kann. "
+       "Herr Vogt, der Konfigurator ist K.o.-Kriterium Nr. 1, genau wie Sie es gefordert haben. Frau Nováková, CZ-Lokalisierung und CZ-Oberfläche sind K.o. "
+       "Fünf Konflikte müssen Sie als GF entscheiden – unsere Vorschläge stehen rechts. Viele Infos im Material waren veraltet oder irreführend (Anhang A9).",
+    3: "Markt (ca. 1,5 Min.): 16 Optionen, auch die Modernisierung von KVA-WARE, Herr Vogt – die haben wir ernsthaft geprüft. Sie scheitert an 5 von 8 K.o.-Kriterien. "
+       "Die meisten Anbieter scheiden aus, weil sie keinen Partner in Tschechien haben. Übrig bleiben drei: Business Central, APplus und IFS.",
+    4: "Bewertung (ca. 2 Min.): IFS kann funktional am meisten, kostet aber 1,2 Mio. € mehr. Business Central hat das beste Verhältnis von Nutzen zu Kosten. "
+       "Frau Haller, wir haben Ihre 5-Jahres-TCO-Methode übernommen – und müssen ehrlich sagen: Mit 1,5 Mio. € ist keine seriöse Lösung machbar. "
+       "Selbst in der Logik des Projektauftrags (Einführung + 3 Jahre Lizenzen) kostet BC rund 1,9 Mio. €, weil die internen Kosten mit 120 T€ viel zu niedrig angesetzt waren.",
+    5: "Empfehlung (ca. 2,5 Min.): Business Central als Favorit – aber erst unterschreiben, wenn der Konfigurator im Test mit dem echten Baukasten funktioniert. Herr Vogt, Sie bewerten diesen Test. "
+       "Pilsen geht zuerst live, Singen am 01.04.2028. Herr Brenner, Ihr Plan B: dieselbe Software kann beim deutschen Hoster laufen. "
+       "Rechts stehen die acht Entscheidungen, die heute bei Ihnen liegen – allen voran Budget und Termin.",
+}

@@ -20,6 +20,7 @@ ORANGE = RGBColor(0xC5, 0x5A, 0x11)
 GREEN = RGBColor(0x38, 0x76, 0x1D)
 RED = RGBColor(0xC0, 0x00, 0x00)
 GRAY = RGBColor(0x59, 0x59, 0x59)
+GRUPPE = "Gruppe: [Name 1, Matr.-Nr.] · [Name 2, Matr.-Nr.] · [Name 3, Matr.-Nr.]"
 LIGHT = RGBColor(0xEE, 0xF3, 0xF8)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 BLACK = RGBColor(0x1A, 0x1A, 0x1A)
@@ -127,7 +128,7 @@ def table(sl, x, y, w, h, rows, colw, size=10, header=True, fills=None):
 # ============================================================ FOLIE 1
 sl = slide("Warum jetzt? Bis Ende 2027 laufen fünf Fristen ab – das Alt-ERP kann keine davon halten",
            "1 · AUSGANGSLAGE UND HANDLUNGSDRUCK", 1)
-text(sl, 9.0, 0.12, 4.0, 0.35, "Gruppe: [Name 1 – Matr.-Nr.] · [Name 2 – Matr.-Nr.] · [Name 3 – Matr.-Nr.]", size=9, color=GRAY, align=PP_ALIGN.RIGHT)
+text(sl, 7.4, 0.1, 5.5, 0.34, GRUPPE, size=10, bold=True, color=NAVY, fill=LIGHT, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
 # Zeitstrahl
 box(sl, 0.6, 2.45, 7.6, 0.05, NAVY)
 events = [
@@ -143,9 +144,13 @@ for i, (d, t1, t2) in enumerate(events):
     s.fill.solid(); s.fill.fore_color.rgb = RED if i in (0, 1, 4) else ORANGE; s.line.fill.background()
     text(sl, x, 1.6, 1.5, 0.7, [(d, {"bold": True, "size": 14, "color": RED if i in (0, 1, 4) else ORANGE}), (t1, {"bold": True, "size": 10})], size=10)
     text(sl, x, 2.7, 1.5, 1.0, t2, size=9.5, color=GRAY)
-text(sl, 0.6, 3.75, 7.6, 0.75,
-     [("Beiratsbeschluss Q3/2025: Abhängigkeit von KVA-WARE bis Ende 2027 auflösen, Entscheidungsvorlage mit ≥ 3 Alternativen bis Q4/2026. "
-       "Der Meilenstein „Vertrag 30.09.2026“ aus dem Projektauftrag ist bereits verstrichen.", {"size": 11})], fill=LIGHT, margin=0.1)
+text(sl, 0.6, 3.6, 3.7, 1.05,
+     [("Auftrag Beirat (Q3/2025)", {"bold": True, "size": 10.5, "color": NAVY}),
+      ("Abhängigkeit von KVA-WARE bis Ende 2027 lösen; Vorlage mit ≥ 3 Alternativen bis Q4/2026. Meilenstein „Vertrag 30.09.2026“ ist schon verstrichen.", {"size": 9.5})], fill=LIGHT, margin=0.08)
+text(sl, 4.45, 3.6, 3.75, 1.05,
+     [("Gescheitert: „KVA neu“ 2014–2016", {"bold": True, "size": 10.5, "color": RED}),
+      ("SAP-Projekt nach 17 Monaten abgebrochen, 940 T€ ohne Ergebnis. Ursachen: kein Konfigurator-Konzept, Key User nicht frei, Stammdaten, revidierte Entscheidungen.", {"size": 9.5})],
+     fill=RGBColor(0xFC, 0xE4, 0xD6), margin=0.08)
 # KPIs
 text(sl, 8.7, 1.5, 4.2, 0.35, "Strategie 2030 ist mit heutiger IT nicht erreichbar", size=13, bold=True, color=NAVY)
 kpis = [("Liefertermintreue", "58 %*", "> 92 %"), ("Durchlaufzeit Standard", "18 AT", "10 AT"), ("Lagerbestand", "18,9 Mio. €", "12 Mio. €"),
@@ -186,8 +191,8 @@ zk = [
 ]
 table(sl, 6.2, 1.75, 6.7, 4.0, zk, [1.25, 2.6, 2.85], size=10)
 text(sl, 6.2, 5.85, 6.7, 0.8,
-     [("Bewusst KEIN K.o.: Offline-Konfigurator auf dem iPad mit 3D, feste Oberfläche wie KVA-WARE, Anbieter „aus Süddeutschland“ – "
-       "das sind Lösungsvorgaben oder Präferenzen, keine Anforderungen.", {"size": 10, "color": GRAY})])
+     [("Ausland beachtet: CZ = EU (Intrastat, Kontrollmeldung, CZ-Sprache) · CH = Drittland (Zoll bei jeder Lieferung, MWST, QR-Rechnung, CHF) → K3/K4, Anhang A10", {"size": 9.5}),
+      ("20 Störinformationen bewusst aussortiert (veraltetes Lastenheft 2015, Anekdoten, iPad-3D-Wunsch, falsche Zahlen) → Anhang A9", {"size": 9.5, "color": GRAY})])
 source(sl, "Anforderungskatalog Rohfassung 12.02.2026; Interviews 01–12; Flipcharts 21.01.2026; Kick-off 02.12.2025; LK-Ergebnis 18.02.2026; BR-Schreiben 09.02.2026. Details: XLSX Blätter 1–3.")
 
 # ============================================================ FOLIE 3
@@ -214,11 +219,10 @@ short = [
 ]
 # Shortlist als Karte unter dem Trichter
 text(sl, 0.5, 5.95, 12.4, 0.75,
-     [("Shortlist: ① Business Central + Branchenlösung (SaaS, Plan B Hosting, CZ-Lokalisierung von Microsoft)   "
-       "② Asseco APplus (Variantenfertigung DE, CZ-Lokalisierung im RFI bestätigen)   "
-       "③ IFS Cloud (ETO/Service, EU-Anbieter, SaaS oder kundenbetrieben)", {"size": 11, "bold": True, "color": NAVY})],
+     [("Shortlist:  ① Business Central + Branchenlösung – Abo je Nutzer, SaaS mit Hosting als Plan B, CZ-Lokalisierung von Microsoft", {"size": 10.5, "bold": True, "color": NAVY}),
+      ("② Asseco APplus – Kauflizenz oder Abo, Spezialist Variantenfertigung, CZ-Lokalisierung im RFI bestätigen   ③ IFS Cloud – Abo, ETO/Service-stark, EU-Anbieter, SaaS oder kundenbetrieben", {"size": 10.5, "bold": True, "color": NAVY})],
      fill=LIGHT, margin=0.1, anchor=MSO_ANCHOR.MIDDLE)
-source(sl, "Herstellerseiten und Primärquellen (Abruf 10/2026): learn.microsoft.com (BC CZ-Lokalisierung), erp-software.org/applus, ifs.com Partnerverzeichnis, SAP KBA 3744200; vollständige Longlist mit Begründung und Prüfstatus: XLSX Blatt 5, Anhang A2.")
+source(sl, "Herstellerseiten und Primärquellen (Abruf 10/2026): learn.microsoft.com (BC CZ-Lokalisierung), erp-software.org/applus, ifs.com Partnerverzeichnis, SAP KBA 3744200; vollständige Longlist mit Begründung: XLSX Blatt 5, Anhang A7; Lizenzmodelle: Anhang A8.")
 
 # ============================================================ FOLIE 4
 sl = slide("IFS bietet den höchsten Nutzen – Business Central das beste Verhältnis von Nutzen zu Kosten",
@@ -273,12 +277,13 @@ fills = {(3, 1): RGBColor(0xC6, 0xEF, 0xCE), (1, 3): RGBColor(0xC6, 0xEF, 0xCE),
 table(sl, 9.25, 1.5, 3.65, 3.2, rows, [1.0, 1.0, 0.8, 0.85], size=9.5, fills=fills)
 text(sl, 0.5, 4.95, 6.1, 1.75,
      [("So lesen wir das Ergebnis", {"bold": True, "color": NAVY, "size": 12}),
-      ("• IFS liegt 0,34 Punkte vor BC – vor allem bei ETO, Service und Konfigurator (Phase-2-Themen bzw. PoC-prüfbar).", {"size": 10.5}),
-      ("• IFS kostet rund 1,2 Mio. € (+46 %) mehr; BC ist bei „Fokus Zeit & Pilsen“ gleichauf mit IFS (Sensitivität, A3).", {"size": 10.5}),
-      ("• APplus fällt wegen offener CZ-Lokalisierung zurück – bei Bestätigung im RFI Platz 2.", {"size": 10.5})])
+      ("• IFS liegt 0,34 Punkte vor BC (ETO, Service, Konfigurator) – kostet aber rund 1,2 Mio. € (+46 %) mehr.", {"size": 10.5}),
+      ("• BC: bester Nutzen je Euro, einziger Weg zu Pilsen vor Ende 2027, Hosting als Plan B; bei „Fokus Zeit & Pilsen“ gleichauf mit IFS (A3).", {"size": 10.5}),
+      ("• APplus fällt wegen offener CZ-Lokalisierung zurück – bei Bestätigung im RFI Platz 2.", {"size": 10.5}),
+      ("• Vollkosten je Nutzer und Monat: BC ≈ 190 €, APplus ≈ 230 €, IFS ≈ 275 € (230 Nutzer, 60 Monate).", {"size": 10.5})])
 text(sl, 6.8, 4.95, 6.1, 1.75,
      [("Budget: keine Option passt in 1,2 Mio. € oder < 1 Mio. €", {"bold": True, "color": RED, "size": 12}),
-      ("• Der Projektauftrag rechnet interne Kosten mit 120 T€ (realistisch 350–450 T€) und nur 3 Jahre Lizenzen.", {"size": 10.5}),
+      ("• Der Projektauftrag rechnet interne Kosten mit 120 T€ (realistisch 350–450 T€). Selbst in seiner Logik (Einführung + 3 J. Lizenzen) kostet BC ≈ 1,9 Mio. €.", {"size": 10.5}),
       (f"• Auch die günstige Variante (BC Basis, {mio(T[1]['total'])} Mio. €) liegt über der CFO-Grenze von 1,5 Mio. €.", {"size": 10.5}),
       ("• Einordnung: 0,5–0,9 % vom Umsatz p. a.; Nutzen 0,5–0,9 Mio. € p. a. + 3–4 Mio. € Liquidität aus Bestandsabbau.", {"size": 10.5})])
 source(sl, "Eigene Nutzwertanalyse (10 Kriterien, Gewichte vorab festgelegt) und TCO-Modell, XLSX Blätter 6–9. BC-Preise lt. Microsoft-Preisänderung 11/2025 (USD→EUR); APplus/IFS-Preise nicht öffentlich = gekennzeichnete Annahmen, im RFP zu validieren.")
@@ -303,17 +308,12 @@ for k, (lab, det, s0, e, col, tip) in enumerate(bars):
     y = y0 + 0.32 + k * 0.48
     text(sl, 0.5, y, 3.0, 0.46, [(lab, {"bold": True, "size": 9.5}), (det, {"size": 7.5, "color": GRAY})], margin=0.02)
     text(sl, x0 + s0 * wq, y + 0.06, (e - s0) * wq, 0.32, tip, size=8, bold=True, color=WHITE, fill=col, anchor=MSO_ANCHOR.MIDDLE, align=PP_ALIGN.CENTER, margin=0.02)
-# Begründung
-text(sl, 0.5, 4.2, 7.6, 2.5,
-     [("Warum Business Central?", {"bold": True, "color": NAVY, "size": 12}),
-      ("• Bestes Verhältnis von Nutzen zu Kosten (1,44 Nutzwertpunkte je Mio. € vs. 1,08 bei IFS).", {"size": 10.5}),
-      ("• Einziger Kandidat, mit dem Pilsen vor Ende 2027 realistisch live gehen kann – DataSoft und viele CZ-Partner kennen BC.", {"size": 10.5}),
-      ("• Gleiche Software als SaaS oder beim deutschen Hoster → beantwortet „Cloud mit Plan B“ (IT, GF Technik, BR).", {"size": 10.5}),
-      ("Bedingung (Lehre aus 2016):", {"bold": True, "color": RED, "size": 10.5}),
-      ("Vertrag erst, wenn die Branchenlösung den KVA-Baukasten im PoC abbildet. Scheitert der PoC → IFS Cloud (+1,2 Mio. €); "
-       "APplus nur bei bestätigter CZ-Lokalisierung.", {"size": 10.5}),
-      ("Größte Risiken: Konfigurator · Key-User-Kapazität · Stammdaten · revidierte Entscheidungen → Gegenmaßnahmen in A5", {"size": 9.5, "color": GRAY})],
-     fill=LIGHT, margin=0.12)
+# Was heißt das für Sie (Management abholen)
+text(sl, 0.5, 4.05, 7.6, 0.3, "Was die Empfehlung für Sie bedeutet", size=12, bold=True, color=NAVY)
+srow = [("Wer", "Ihr Anliegen", "Unsere Antwort")] + [r for r in D.STAKE if r[0] != "Beirat"]
+table(sl, 0.5, 4.35, 7.6, 2.0, srow, [1.75, 2.75, 3.1], size=7.5)
+text(sl, 0.5, 6.5, 7.6, 0.3, "Bedingung (Lehre aus 2016): Vertrag erst nach bestandenem Konfigurator-PoC – sonst IFS (+1,2 Mio. €). Risiken: Anhang A5.",
+     size=9.5, bold=True, color=RED)
 # Entscheidungen GF
 text(sl, 8.35, 1.4, 4.55, 5.3,
      [("Das muss die Geschäftsführung entscheiden", {"bold": True, "color": WHITE, "size": 12.5}),
@@ -400,7 +400,33 @@ table(sl, 0.4, 1.3, 12.55, 4.6, steps, [1.2, 8.0, 3.35], size=10.5)
 text(sl, 0.4, 6.05, 12.55, 0.65, "Offene Rückfragen an die GF (Rollenspiel): Status Rahmen-BV? · Gilt 01.01.2028 auch bei Verschiebung des Vertrags? · Ist die Obergrenze 1,5 Mio. € TCO beschlossen oder Wunsch? · "
      "NIS2-Registrierung erfolgt? · Ist DataSoft zu befristetem Notfallsupport bereit?", size=10, fill=LIGHT, margin=0.1)
 
-sl = slide("Anhang A7 – Quellen", "ANHANG", "A7")
+sl = slide("Anhang A7 – Longlist komplett: wer warum ausscheidet (für Rückfragen)", "ANHANG", "A7")
+rows = [("Nr", "Produkt", "Betrieb", "Präsenz CZ", "Ergebnis", "Begründung")] + [(l[0], l[2], l[4], l[6], l[8], l[9]) for l in D.LONGLIST]
+fills = {}
+for i, l in enumerate(D.LONGLIST, 1):
+    fills[(i, 4)] = RGBColor(0xC6, 0xEF, 0xCE) if l[8].startswith("Shortlist") else RGBColor(0xFF, 0xEB, 0x9C) if l[8].startswith("Nachr") else RGBColor(0xFF, 0xC7, 0xCE)
+table(sl, 0.35, 1.2, 12.65, 5.75, rows, [0.35, 2.6, 1.9, 2.4, 1.2, 4.2], size=6.8, fills=fills)
+
+sl = slide("Anhang A8 – Lizenzmodelle: was wird eigentlich bezahlt?", "ANHANG", "A8")
+rows = [("System", "Lizenzmodell", "Nutzerarten", "Shopfloor/Lager", "Kauf möglich?", "Konsequenz für KVA", "Prüfstatus")] + list(D.LIZENZ)
+table(sl, 0.35, 1.25, 12.65, 4.3, rows, [1.6, 2.3, 2.1, 1.6, 1.2, 2.45, 1.4], size=8)
+text(sl, 0.35, 5.75, 12.65, 0.95,
+     [("Warum das wichtig ist: 210 Mitarbeitende melden in der Fertigung zurück. Würde jede Person eine Volllizenz brauchen, stiege die Subskription um ein Vielfaches. "
+       "Deshalb rechnen wir mit 120 Voll- und 110 Light-Usern plus 30 Geräte-Lizenzen und fragen das Lizenzmodell für alle drei Nutzerarten im RFP verbindlich ab "
+       "(inkl. Preisbindung über 5 Jahre).", {"size": 10.5})], fill=LIGHT, margin=0.1)
+
+sl = slide("Anhang A9 – Störinformationen: was wir bewusst nicht verwendet haben", "ANHANG", "A9")
+rows = [("Nr", "Information", "Fundstelle", "Warum irreführend", "Umgang")] + [(x[0], x[1], x[2], x[3], x[4]) for x in D.STOER]
+table(sl, 0.35, 1.2, 12.65, 5.75, rows, [0.35, 3.9, 1.8, 3.3, 3.3], size=6.8)
+
+sl = slide("Anhang A10 – Länder und Rechtsrahmen: Inland, EU-Ausland, Drittland", "ANHANG", "A10")
+rows = [("Gesellschaft", "Status", "Rechtliche Anforderungen an das ERP", "Weitere Anforderungen")] + list(D.LAENDER)
+table(sl, 0.35, 1.3, 12.65, 4.2, rows, [2.0, 1.4, 5.5, 3.75], size=9.5)
+text(sl, 0.35, 5.7, 12.65, 1.0,
+     [("Folge für die Auswahl: Lokalisierung für DE, CZ und CH ist K.o.-Kriterium K4, mehrere Gesellschaften und Währungen K3. Schweiz-Lieferungen brauchen heute Papier-Zolldokumente "
+       "(Interview 08) – Zoll/ATLAS-Anbindung ist Muss (L-006). Datenhaltung: EU-Rechenzentrum ist K7; die Schweiz erkennt das EU-Datenschutzniveau als angemessen an.", {"size": 10.5})], fill=LIGHT, margin=0.1)
+
+sl = slide("Anhang A11 – Quellen", "ANHANG", "A11")
 qs = ["Fallpaket KVA (HTWG Konstanz, ERP-Systeme): Aufgabenstellung, Ordner 01–07 inkl. Interviews 01–12, E-Mail-Verlauf, Beiratsprotokoll Q3/2025, Anforderungskatalog Rohfassung, Helpdesk-Export 2025",
       "Microsoft Learn: Czech Local Functionality – Business Central (learn.microsoft.com/…/localfunctionality/czech/czech-local-functionality)",
       "Business-Central-Preise ab 01.11.2025 (Essentials 80 USD, Premium 110 USD, Team Member 8 USD): alphavima.com/blog/business-central-pricing-guide; netsmartz.com",
@@ -413,5 +439,8 @@ qs = ["Fallpaket KVA (HTWG Konstanz, ERP-Systeme): Aufgabenstellung, Ordner 01�
       "Hinweis: Alle Herstellerangaben Stand Abruf 10/2026; Preise für APplus und IFS sind nicht öffentlich und als Annahmen gekennzeichnet."]
 text(sl, 0.5, 1.4, 12.3, 5.3, [("• " + q, {"size": 11, "after": 6}) for q in qs])
 
+for i, sl_ in enumerate(prs.slides, 1):
+    if i in D.NOTES:
+        sl_.notes_slide.notes_text_frame.text = D.NOTES[i]
 prs.save(OUT)
 print("ok", OUT)
