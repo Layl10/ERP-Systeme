@@ -1,0 +1,160 @@
+=====================================================================
+EXPORT OUTLOOK – Ordner "ERP 2028" – L. Hartmann – exportiert 10.02.2026
+=====================================================================
+
+---------------------------------------------------------------------
+Von:     Sabine Haller
+An:      Dr. Martina Kessler; Werner Vogt
+Cc:      Lisa Hartmann; Markus Brenner
+Datum:   19.01.2026 17:42
+Betreff: ERP 2028 – Budgetrahmen klarstellen
+
+Liebe Martina, lieber Werner,
+
+nach den ersten Gesprächen habe ich den Eindruck, dass wir beim Budget unterschiedliche Zahlen im Kopf haben:
+
+- Projektauftrag: 1,2 Mio. € (Einführung + 3 Jahre Lizenzen)
+- Martina: "unter 1 Mio."
+- Werner: "max. 1 Mio." (?)
+- Meine Rechnung: TCO 5 Jahre max. 1,5 Mio. € inkl. interner Kosten
+
+Die internen Kosten (Key User, IT) sind im Projektauftrag mit 120 T€ angesetzt. Realistisch sind eher 350–450 T€, wenn wir 10 Key User 18 Monate zu 20–30 % freistellen.
+
+Vorschlag: Wir legen fest, dass wir in der Auswahl mit einer 5-Jahres-TCO rechnen und die Obergrenze 1,5 Mio. € ist. Bitte um kurze Rückmeldung.
+
+Viele Grüße
+Sabine
+
+---------------------------------------------------------------------
+Von:     Werner Vogt
+An:      Sabine Haller; Dr. Martina Kessler
+Datum:   20.01.2026 06:58
+Betreff: AW: ERP 2028 – Budgetrahmen klarstellen
+
+1,5 Mio für Software? Das sind 3 neue Verzahnungsmaschinen.
+Ich bleibe dabei: Modernisierung KVA-WARE prüfen. Ich habe dazu ein Angebot von einer Firma aus Ulm angefragt (RPG-Migration).
+
+WV
+
+Gesendet von meinem iPhone
+
+---------------------------------------------------------------------
+Von:     Dr. Martina Kessler
+An:      Werner Vogt; Sabine Haller
+Cc:      Lisa Hartmann
+Datum:   20.01.2026 08:15
+Betreff: AW: AW: ERP 2028 – Budgetrahmen klarstellen
+
+Werner, wir hatten im Beirat beschlossen, dass wir ein Standard-ERP einführen. Eine Modernisierung von KVA-WARE ist keine Option. Bitte stoppe die Anfrage in Ulm.
+
+Sabine: Einverstanden mit 5-Jahres-TCO als Methode. Obergrenze besprechen wir im Lenkungskreis. Ich möchte aber, dass die Auswahl auch eine "günstige Variante" zeigt.
+
+Lisa: Bitte lass in der Auswahl beide Betriebsmodelle bewerten. Keine Vorfestlegung.
+
+Martina
+
+---------------------------------------------------------------------
+Von:     Werner Vogt
+An:      Dr. Martina Kessler
+Datum:   20.01.2026 12:31
+Betreff: AW: AW: AW: ERP 2028 – Budgetrahmen klarstellen
+
+Der Beirat hat beschlossen, dass wir die Abhängigkeit von Brugger lösen. Von "Standard-ERP" stand nichts im Protokoll. Ich lasse mir das Angebot trotzdem schicken, das kostet ja nichts.
+
+---------------------------------------------------------------------
+Von:     Markus Brenner
+An:      Lisa Hartmann
+Datum:   21.01.2026 09:03
+Betreff: Betriebsmodell – Info Wehrtechnik
+
+Hallo Lisa,
+
+ich habe mit dem Einkauf unseres größten Wehrtechnik-Kunden telefoniert. Aussage: Für die aktuellen Aufträge gibt es KEINE Vorgabe, wo unser ERP betrieben wird. Bei künftigen Aufträgen (Rahmenvertrag ab 2027) könnten Anforderungen nach "Geheimschutzbetreuung" und Datenhaltung in Deutschland kommen. Schriftlich gibt es nichts.
+
+Ich würde das als "mögliche künftige Anforderung" führen und Anbieter fragen, ob Datenhaltung in DE und Betrieb durch deutsches Personal möglich ist.
+
+Gruß Markus
+
+---------------------------------------------------------------------
+Von:     Ralf Moser
+An:      Lisa Hartmann
+Cc:      Dr. Martina Kessler
+Datum:   26.01.2026 21:14
+Betreff: Salesforce
+
+Hallo Frau Hartmann,
+
+ich habe gehört, dass im Anforderungskatalog "CRM im ERP" als Muss steht. Das ist mit dem Vertrieb nicht abgestimmt. Der Außendienst arbeitet mit Salesforce, wir haben 2021 viel investiert. Ich bitte, die Anforderung zu ändern in "Integration Salesforce".
+
+Gruß
+R. Moser
+
+---------------------------------------------------------------------
+Von:     Dr. Martina Kessler
+An:      Ralf Moser
+Cc:      Lisa Hartmann
+Datum:   27.01.2026 07:40
+Betreff: AW: Salesforce
+
+Ralf, wir lassen beides bewerten: (a) ERP inkl. CRM, (b) ERP + Salesforce-Integration. Bitte keine Vorfestlegung. Wir entscheiden nach Fakten.
+M.
+
+---------------------------------------------------------------------
+Von:     Elena Nováková
+An:      Lisa Hartmann; Sabine Haller
+Cc:      Werner Vogt
+Datum:   04.02.2026 14:22
+Betreff: URGENT – NAV partner termination
+
+Dear Lisa, dear Sabine,
+
+DataSoft confirmed in writing: support for our NAV ends 31.12.2026, no extension. They offered migration to Business Central with their own add-ons for approx. 2.1 mil. CZK, project 6 months.
+
+Please advise how to proceed. We need a decision by end of April.
+
+Best regards
+Elena
+
+---------------------------------------------------------------------
+Von:     Werner Vogt
+An:      Elena Nováková
+Cc:      Lisa Hartmann; Sabine Haller
+Datum:   04.02.2026 16:05
+Betreff: AW: URGENT – NAV partner termination
+
+Elena, bitte nichts unterschreiben. Wir finden einen anderen Partner für NAV. Das System läuft doch.
+Werner
+
+---------------------------------------------------------------------
+Von:     Lisa Hartmann
+An:      Lenkungskreis ERP 2028
+Datum:   05.02.2026 10:12
+Betreff: Entscheidungsbedarf Lenkungskreis 18.02.
+
+Liebe Mitglieder des Lenkungskreises,
+
+für den 18.02. sehe ich folgende Entscheidungen:
+1. Budgetrahmen / TCO-Methode
+2. Pilsen: Phase 1, Phase 2 oder Brückenlösung?
+3. Betriebsmodell: offen bewerten (Vorschlag) oder Vorgabe?
+4. CRM: ERP-integriert vs. Salesforce
+5. Seriennummernpflicht für alle Antriebe (Service/QM) vs. nur Sonderantriebe (Lager/GF Technik)
+6. Externe Auswahlberatung beauftragen (Angebot 58 T€)
+7. Go-live-Termin bestätigen oder auf 07/2028 verschieben
+
+Viele Grüße
+Lisa Hartmann
+
+---------------------------------------------------------------------
+Von:     Lisa Hartmann
+An:      Lenkungskreis ERP 2028
+Datum:   19.02.2026 08:30
+Betreff: Ergebnis Lenkungskreis 18.02. (Kurzfassung)
+
+- TOP 1: 5-Jahres-TCO als Methode beschlossen. Obergrenze nicht beschlossen ("abhängig von Auswahlergebnis").
+- TOP 2: vertagt. Prüfauftrag an Auswahl: Kann der Kandidat Pilsen bis 31.12.2026 bzw. Q1/2027 abbilden?
+- TOP 3: beide Modelle bewerten.
+- TOP 4: beide Varianten bewerten.
+- TOP 5: vertagt (Hr. Vogt nicht anwesend, krankheitsbedingt).
+- TOP 6: Statt Beratung wird ein Team der HTWG Konstanz die Marktrecherche und Vorauswahl vorbereiten. :-)
+- TOP 7: vertagt.

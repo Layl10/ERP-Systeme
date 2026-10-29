@@ -1,0 +1,21 @@
+Interview Lager – Dirk Hummel – 27.01.2026 – Gesprächsnotiz (Diktat Smartphone, transkribiert, unredigiert)
+
+Also, ich sag mal so, das Lager funktioniert, weil wir uns auskennen. Wenn ich und der Bernd mal beide krank sind, dann findet keiner mehr was. Lagerplätze stehen im Freitext, manche stimmen, manche nicht. Wir haben 4.800 Plätze, ich glaube eher 5.200 seit dem Umbau Halle 2.
+
+Was ich brauche: Scanner. Wareneingang scannen, Umlagern scannen, Kommissionieren scannen. Und dass das System sagt wo was liegt. Feste Plätze für Schnelldreher, chaotisch für den Rest. Den Kardex müsste man anbinden, der hat eine Schnittstelle, hat mir der Kardex-Techniker gesagt.
+
+Inventur – permanente Inventur wäre ein Traum, dann müssen wir im Dezember nicht zwei Tage zumachen. Frau Haller sagt, das geht nur, wenn die Bestände stimmen. Ja klar, aber dafür brauchen wir ja das System.
+
+Seriennummern: Also ehrlich, bei den Standardgetrieben macht das keinen Sinn, das sind 30.000 Stück im Jahr. [Anm. LH: Zahl unplausibel, Produktion nennt ca. 22.000 Getriebe p. a. – nachfragen] Das Typenschild hat eine Fertigungsnummer, die reicht. Wenn der Service das will, soll er es halt erfassen. Wenn wir das scannen können, ok, dann ist es kein Aufwand. Aber nicht abtippen.
+
+Chargen – Frau Rieger will Chargen für Guss. Das sind dann ja Gehäuse, die gehen durch die Bearbeitung, dann in die Montage. Wer schreibt da die Charge auf? Wenn das System das macht, gerne.
+
+Versand: das Access-Ding stürzt dauernd ab. Wir brauchen Paketdienste DHL, DPD, UPS und Spedition, Labels direkt, Packliste, Gewichte. Und Zoll! Schweiz ist eine Katastrophe, jedes Mal Papier. Und nach Pilsen geht jeden Tag ein LKW, da machen wir Lieferscheine in Word, weil das in KVA-WARE nicht als Umlagerung geht, das wird als Verkauf gebucht. Frau Haller weiß das.
+
+Konsignation bei zwei Kunden, die rufen an und sagen was sie verbraucht haben. Das wird dann fakturiert. Manchmal vergessen.
+
+Ersatzteile: Der Service will einen Webshop. Dann müssen die Bestände stimmen, sonst bestellt der Kunde was, was wir nicht haben.
+
+Was ich nicht will: Bildschirme, wo man zehnmal klicken muss. Meine Leute sind Lageristen, keine Büroleute. Groß, einfach, Scanner. Und deutsch – zwei Kollegen sprechen kaum Deutsch, die bräuchten eher Rumänisch oder Türkisch, aber gut.
+
+Ach ja, und das Internet. Wenn das Netz weg ist, steht der Versand. War letztes Jahr zweimal. Da haben wir mit Handzetteln gearbeitet.

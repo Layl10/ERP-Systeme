@@ -1,0 +1,29 @@
+Ticket-Nr;Datum;Melder;Bereich;Kategorie;Betreff;Beschreibung;Status;Aufwand_h
+T25-0012;08.01.2025;Petersen;Vertrieb;Auswertung;Liste offene Aufträge Italien;Bitte Liste wie letztes Jahr, nur Italien und mit Liefertermin;erledigt (Brugger);3
+T25-0031;15.01.2025;Lang;AV;Stammdaten;Stückliste 4711-23 falsch;PDM-Stand Rev C, KVA-WARE hat Rev A;erledigt;1
+T25-0047;22.01.2025;Haller;Finanzen;Schnittstelle;DATEV-Differenz Januar;Differenz 12.430,55 EUR zwischen OP-Liste und DATEV;erledigt;6
+T25-0058;29.01.2025;Hummel;Lager;Fehler;Versandmodul stürzt ab;Access-Fehler 3049 beim Labeldruck;Workaround;2
+T25-0103;14.02.2025;Moser;Vertrieb;Wunsch;Liefertermin in Salesforce;Außendienst will Liefertermine sehen;abgelehnt (keine Schnittstelle);0,5
+T25-0119;20.02.2025;Wiedmann;Produktion;BDE;Rückmeldungen fehlen Schicht 3;Datei nicht übertragen;erledigt;2
+T25-0144;03.03.2025;Petersen;Vertrieb;Stammdaten;Preisliste 2025 KonfiX;Preise in KonfiX und KVA-WARE unterschiedlich;erledigt;8
+T25-0162;12.03.2025;Arnold;Controlling;Auswertung;DB-Rechnung Q1;Bitte Rohdaten Umsatz/Material je Auftrag;erledigt (Brugger);5
+T25-0201;02.04.2025;Seitz;Service;Wunsch;Seriennummernsuche;Suche nach Fertigungsnummer aus Freitext;abgelehnt;0,5
+T25-0233;17.04.2025;Nováková;Pilsen;Schnittstelle;IC-Lieferungen fehlen;Excel-Liste April nicht verarbeitet;erledigt;3
+T25-0260;05.05.2025;Frick;Einkauf;Wunsch;Kupferzuschlag Automatik;Börsenkurs automatisch übernehmen;offen;0
+T25-0288;21.05.2025;Lang;AV;Stammdaten;Arbeitsplan Härterei;Vorgabezeiten veraltet;offen;0
+T25-0301;28.05.2025;Petersen;Vertrieb;Fehler;Umlaute AB englisch;Ä Ö Ü werden als ? gedruckt;Workaround;1
+T25-0322;06.06.2025;Brenner;IT;Infrastruktur;Internetausfall;Ausfall 5,5 h, Versand und Salesforce nicht nutzbar, KVA-WARE lief;erledigt;4
+T25-0345;19.06.2025;Rieger;QM;Wunsch;Chargen Guss;Rückverfolgung Gussfehler Charge 25-118;manuell (Archiv);24
+T25-0367;03.07.2025;Haller;Finanzen;Fehler;Berechtigung;Azubi konnte Zahlungsvorschlag freigeben;erledigt;2
+T25-0390;18.07.2025;Hummel;Lager;Wunsch;Lagerplatz Pflichtfeld;Freitext durch Auswahl ersetzen;abgelehnt (Aufwand);0,5
+T25-0412;30.07.2025;Wiedmann;Produktion;BDE;Terminal Halle 1 defekt;Ersatzteil nicht lieferbar, Gebrauchtteil über eBay;erledigt;6
+T25-0440;14.08.2025;Petersen;Vertrieb;Auswertung;Exportkontrolle;Liste aller Aufträge Russland/Belarus seit 2022;erledigt (Brugger);4
+T25-0466;01.09.2025;Arnold;Controlling;Auswertung;Nachkalkulation Projekt S-2291;Ist-Stunden je Arbeitsgang;teilweise (BDE unvollständig);7
+T25-0489;16.09.2025;Brenner;IT;Infrastruktur;Internetausfall;Ausfall 4,2 h;erledigt;3
+T25-0502;24.09.2025;Seitz;Service;Wunsch;Mobile Serviceberichte;App für Techniker;abgelehnt;0
+T25-0533;09.10.2025;Lang;AV;Fehler;Bruttobedarf doppelt;Nachtlauf hat Bedarf doppelt erzeugt;erledigt (Brugger);5
+T25-0561;27.10.2025;Petersen;Vertrieb;Wunsch;Mahnsperre Kunde;Mahnsperre per Kunde statt global;erledigt (Brugger);3
+T25-0590;12.11.2025;Haller;Finanzen;Gesetzlich;E-Rechnung Empfang;XRechnung lesen;Workaround (Viewer);2
+T25-0612;25.11.2025;Hummel;Lager;Fehler;Bestand Pilsen;Bestand Gehäuse Pilsen unbekannt, Montage steht;manuell (Telefon);1
+T25-0640;10.12.2025;Brugger;IT;Wartung;Jahreswechsel;Jahresabschlussläufe vorbereiten;erledigt;16
+T25-0651;18.12.2025;Kessler;GF;Auswertung;Auftragseingang tagesaktuell;Bitte tägliche Mail mit AE;erledigt (Brugger);4
