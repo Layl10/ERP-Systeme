@@ -34,6 +34,7 @@ for a, b in [
     ("„Kannst du das mal lesen, was man alles braucht?“", "Zusammenfassung der Aufgabenstellung (Artefakte A–D, Bewertung, Termine)"),
     ("„Kannst du erstmal ein Konzept machen, wie man das machen soll?“", "Vorgehen in 5 Phasen; Struktur der Excel-Blätter"),
     ("„Kannst du das einmal komplett lösen?“", "Widerspruchsliste, Klassifizierung aller 111 Anforderungen, Longlist/Shortlist, NWA, TCO, Folien"),
+    ("„Fasse das Beste aus beiden Versionen zusammen“ + Vorlesungsfolien Teil 1/2", "Quellen der Gruppenversion geprüft, Shortlist korrigiert, Testskript, Kostenspannen, nummerierte Quellen, Kriterium Multi-Site"),
     ("Anmerkungen des Dozenten (Name/Matrikelnr., gescheitertes Projekt, Störinfos, Lizenzen, Longlist/Shortlist für Rückfragen, Gesamtkosten, Management abholen, EU-Ausland/Budget)", "Ergänzt: Folie 1 (2016, Gruppe), Stakeholder-Tabelle Folie 5, Anhang A7–A10, Blätter 11–14, Sprechernotizen"),
     ("Websuchen u. a.: „E-Rechnung Pflicht Versand 2027 800.000“, „Business Central Czech localization“, „IFS Czech partner“, „proALPHA Tschechien“, „SAP S/4HANA Public Czech e-invoicing“, „NIS2UmsuCG in Kraft“",
      "Prüfung von Herstelleraussagen und Rechtsfristen gegen Primär-/Sekundärquellen"),
@@ -47,9 +48,10 @@ for s in [
     "Vollständigkeit: Skript prüft, dass alle 111 IDs der Rohfassung klassifiziert sind (keine fehlt, keine erfunden).",
     "Rechenlogik: TCO und Nutzwert einmal in Python und einmal als Excel-Formel berechnet; LibreOffice-Neuberechnung ergab identische Werte, keine Formelfehler.",
     "Herstellerangaben: per Websuche geprüft. Bestätigt: CZ-Lokalisierung Business Central (Microsoft Learn), BC-Preise ab 11/2025 (nur USD-Sekundärquellen), IFS-Partner in CZ, SAP-KBA zu fehlendem E-Invoicing CZ. "
-    "NICHT bestätigt: CZ-Präsenz von proALPHA/abas, CZ-Lokalisierung von APplus → als „offen/im RFI prüfen“ markiert statt als Fakt.",
+    "Abgleich mit einer zweiten, mit ChatGPT erstellten Gruppenversion: deren Quellen geprüft → CZ-Partner von proALPHA (SPC solutions), abas (amotIQ) und Infor (ITeuro) bestätigt; unsere Longlist hatte sie fälschlich als „nicht belegt“ geführt und wurde korrigiert (Shortlist jetzt BC, proALPHA, IFS, abas). NICHT belegt: APplus-Partner in CZ → Nachrücker.",
     "Korrektur durch Recherche: Fallpaket nennt E-Rechnungs-Versandpflicht „2027/2028 offen“ – Recherche ergab 01.01.2027 für KVA (Umsatz > 800 T€) → neue Sofortmaßnahme.",
-    "Preise APplus/IFS sind nicht öffentlich: alle Werte als ANNAHME (gelb) gekennzeichnet; keine von der KI „erfundenen“ Listenpreise.",
+    "BC-Preise auf die Euro-Werte der Microsoft-Preisseite umgestellt (vorher aus USD umgerechnet). Preise proALPHA/IFS/abas sind nicht öffentlich: als ANNAHME (gelb) mit Spanne −15 %/+35 % gekennzeichnet.",
+    "Vorlesungsfolien (Kurz 2026; Martin/Kurz 2024) eingearbeitet: Kriterium Multi-Site vs. Mehrmandanten; keine Marktanteilsstudien genutzt („Datenquellen meist zweifelhaft“).",
 ]:
     doc.add_paragraph(s, style="List Bullet")
 

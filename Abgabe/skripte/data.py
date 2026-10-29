@@ -421,116 +421,119 @@ MENGEN = [
 # (Nr, Anbieter, Produkt, Herkunft, Betriebsmodelle, CTO/ETO-Fit, CZ-Präsenz, DE-Partner, Ergebnis, Begründung, Quelle, Prüfstatus)
 LONGLIST = [
     (1, "Microsoft", "Dynamics 365 Business Central (+ Fertigungs-/Konfigurator-Erweiterung)", "USA", "SaaS (Azure EU); On-Prem/Partner-Hosting möglich",
-     "CTO nur mit ISV-Erweiterung; ETO Basis (Projekte)", "sehr hoch – CZ-Lokalisierung von Microsoft, viele Partner (u. a. DataSoft-Angebot)", "sehr hoch",
+     "CTO nur mit ISV-Erweiterung; ETO Basis (Projekte); Mehrmandanten-System (S20)", "sehr hoch – CZ-Lokalisierung von Microsoft, viele Partner (u. a. DataSoft-Angebot)", "sehr hoch",
      "Shortlist", "Günstigste Variante, Pilsen schnell machbar, Plan B (Hosting) möglich; Risiko: Konfigurator/APS nur über Partnerlösungen",
-     "learn.microsoft.com/dynamics365/business-central/localfunctionality/czech/czech-local-functionality", "verifiziert (CZ-Lokalisierung, Preise USD) – ISV im RFP"),
-    (2, "Asseco Solutions", "APplus", "DE (Karlsruhe)", "Cloud, Hybrid, On-Prem (lt. erp-software.org)",
-     "hoch – Fokus Serien-/Variantenfertiger, Maschinenbau", "mittel – Asseco Solutions mit CZ-Organisation (HELIOS); APplus-CZ-Lokalisierung UNBESTÄTIGT", "hoch",
-     "Shortlist (mit Vorbehalt K4/K6)", "Deutscher Mittelstandsanbieter, starke Variantenfertigung; K.o.-Prüfung CZ im RFI zwingend",
-     "applus-erp.de; erp-software.org/software/applus", "teilweise verifiziert – CZ im RFI"),
+     "S02, S03", "verifiziert (CZ-Lokalisierung, EUR-Preise)"),
+    (2, "Proalpha Group", "proALPHA ERP", "DE", "Business Cloud (managed), On-Prem, hybrid",
+     "hoch – Produktkonfigurator mit Stückliste/Arbeitsplan lt. Hersteller; Mehrmandanten-System (S20)", "mittel – SPC solutions s.r.o., Zlín, als Sales Partner gelistet; Implementierungsumfang + CZ-Lokalisierung im RFI bestätigen", "hoch",
+     "Shortlist", "Mittelstands-Spezialist für Variantenfertiger, DE-Anbieter mit Cloud + On-Prem; CZ über Partner",
+     "S05, S06", "verifiziert (Standortseite) – CZ-Lokalisierung offen"),
     (3, "IFS", "IFS Cloud", "SE (EU)", "SaaS oder kundenbetrieben (On-Prem/Remote)",
-     "hoch – ETO/Projekt, Service, Instandhaltung (EAM) sehr stark; Konfigurator vorhanden", "hoch – Präsenz CZ seit 2000, Partner CDC Data, InfoConsulting", "mittel",
+     "hoch – ETO/Projekt, Service, Instandhaltung sehr stark; Konfigurator vorhanden; Multi-Company/Multi-Site", "hoch – Präsenz CZ seit 2000, Partner CDC Data, InfoConsulting", "mittel",
      "Shortlist", "Funktional breiteste Abdeckung (ETO + Service), EU-Anbieter, beide Betriebsmodelle; teuerste Option",
-     "ifs.com/partners (CDC Data); lupa.cz Pressemitteilung IFS CZ", "verifiziert (CZ-Partner) – Preise Annahme"),
-    (4, "proALPHA Group", "proALPHA ERP", "DE", "Business Cloud (managed), On-Prem, hybrid",
-     "hoch – diskrete Fertiger DACH", "nicht belegt", "hoch",
-     "Nachrücker", "Fachlich passend, aber keine belegte CZ-Präsenz/-Lokalisierung (K4/K6) – im RFI nachfragen",
-     "proalpha.com; siemens.com ecosystem", "CZ nicht verifiziert"),
-    (5, "Forterro", "abas ERP", "DE (Karlsruhe)", "Cloud, On-Prem",
-     "hoch – Fertigungs-Mittelstand, Varianten", "nicht belegt", "hoch",
-     "Nachrücker", "Fachlich passend; CZ-Partner nicht belegt (K6)",
-     "abas-erp.com; industrial-production.de (Übernahme Forterro)", "CZ nicht verifiziert"),
+     "S09, S10, S11", "verifiziert (CZ-Partner) – Preise Annahme"),
+    (4, "Forterro", "abas ERP", "DE (Karlsruhe)", "Cloud, On-Prem",
+     "hoch – Fertigungs-Mittelstand, APS/Feinplanung, Auftrags-/Projektfertigung lt. Hersteller; Mehrmandanten-System (S20)", "mittel – amotIQ s.r.o. als Partner für CZ/SK (Pressemeldung)", "hoch",
+     "Shortlist", "Fertigungsfokus, DE-Anbieter mit Cloud + On-Prem; CZ-Partner belegt, Lokalisierung im RFI bestätigen",
+     "S07, S08, S16", "verifiziert (CZ-Partner, Sekundärquelle)"),
+    (5, "Asseco Solutions", "APplus", "DE (Karlsruhe)", "Cloud, Hybrid, On-Prem (lt. erp-software.org)",
+     "hoch – Serien-/Variantenfertiger; Zwei-System-Architektur lt. Vorlesung (S20)", "gering – Asseco Solutions CZ vertreibt HELIOS; APplus-Partner/-Lokalisierung in CZ nicht belegt", "hoch",
+     "Nachrücker", "Fachlich passend, aber kein belegter APplus-Partner in CZ (K4/K6) – im RFI nachfragen",
+     "S13, S14, S20", "teilweise verifiziert – CZ nicht belegt"),
     (6, "SAP", "S/4HANA Cloud Public Edition", "DE", "nur SaaS",
-     "Variantenkonfiguration stark; ETO/Projekt im Public-Standard begrenzt", "hoch (Länderversion CZ)", "sehr hoch",
-     "ausgeschieden", "Nur SaaS ohne Plan B; laut SAP-KBA 3744200 kein Outbound-E-Invoicing CZ in DRC; Akzeptanzrisiko nach SAP-Abbruch 2016 („kein SAP“-Karte)",
-     "sap.com; SAP KBA 3744200", "verifiziert (KBA) – Rest Einschätzung"),
+     "Variantenkonfiguration stark; ETO/Projekt im Public-Standard begrenzt; Multi-Site", "hoch (Länderversion CZ)", "sehr hoch",
+     "ausgeschieden", "Nur SaaS ohne Plan B; lt. SAP-KBA 3744200 kein Outbound-E-Invoicing CZ in DRC; Akzeptanzrisiko nach SAP-Abbruch 2016 („kein SAP“-Karte)",
+     "S15", "verifiziert (KBA) – Rest Einschätzung"),
     (7, "SAP", "S/4HANA Cloud Private Edition (RISE)", "DE", "Private Cloud",
-     "sehr hoch (inkl. LO-VC/AVC, PS)", "hoch", "sehr hoch",
+     "sehr hoch (inkl. Advanced Variant Configuration, PS); Multi-Site", "hoch", "sehr hoch",
      "ausgeschieden", "Für 420 MA / 230 Nutzer überdimensioniert, TCO deutlich über Rahmen, Komplexität wie 2016",
-     "sap.com", "Einschätzung"),
+     "–", "Einschätzung"),
     (8, "Microsoft", "Dynamics 365 Finance + Supply Chain Mgmt.", "USA", "nur SaaS",
-     "hoch (constraint-basierter Konfigurator, Projekt)", "hoch", "hoch",
-     "ausgeschieden", "Enterprise-Lizenzmodell (höhere Preise, Mindestmengen) und Projektaufwand über Rahmen; nur SaaS",
-     "microsoft.com/dynamics-365", "Einschätzung"),
-    (9, "Infor", "CloudSuite Industrial (SyteLine)", "USA", "überwiegend SaaS (AWS)",
-     "hoch – CPQ/Configure-to-Order", "gering", "gering-mittel",
-     "ausgeschieden", "Geringe Partnerdichte DE/CZ (K6), US-Cloud ohne Plan B",
-     "infor.com", "Einschätzung – zu verifizieren"),
+     "hoch (regelbasierter Produktkonfigurator, finite Kapazität); Multi-Site", "hoch", "hoch",
+     "ausgeschieden", "Listenpreis SCM 182 €/Nutzer/Monat (S04) → 120 Vollnutzer ≈ 1,3 Mio. € reine Lizenz über 5 J.; nur SaaS",
+     "S04", "verifiziert (Preis)"),
+    (9, "Infor", "CloudSuite Industrial (SyteLine)", "USA", "überwiegend Multi-Tenant-SaaS",
+     "hoch – CPQ/Configure-to-Order, finite APS", "hoch – ITeuro (Gold Channel Partner CZ/SK), Referenz FINIDR mit CSI + CPQ (S12)", "gering",
+     "ausgeschieden", "CZ belegt, aber US-Multi-Tenant-Cloud ohne Plan B/Offline (Brenner, Vogt) und geringe DE-Partnerdichte",
+     "S12", "verifiziert (CZ-Referenz)"),
     (10, "Infor", "Infor LN", "USA", "SaaS / On-Prem",
      "hoch – ETO/Anlagenbau", "gering", "mittel",
-     "ausgeschieden", "Eher Großunternehmen, Partner CZ (K6)",
-     "infor.com", "Einschätzung"),
+     "ausgeschieden", "Eher Großunternehmen, CZ-Partner nicht belegt (K6)",
+     "–", "Einschätzung"),
     (11, "Epicor", "Kinetic", "USA", "SaaS / On-Prem",
      "mittel-hoch (Make-to-Order, CPQ)", "gering", "gering",
-     "ausgeschieden", "Schwache DACH-/CZ-Präsenz (K6)",
-     "epicor.com", "Einschätzung"),
+     "ausgeschieden", "DE/CZ-Implementierungspartner nicht belegt (K6)",
+     "–", "Einschätzung"),
     (12, "PSI", "PSIpenta", "DE", "Cloud / On-Prem",
-     "hoch ETO/Einzelfertigung, CTO mittel", "gering", "mittel",
+     "hoch ETO/Einzelfertigung, CTO mittel; Zwei-System-Architektur (S20)", "gering", "mittel",
      "ausgeschieden", "CZ-Präsenz nicht belegt (K6), Fokus Einzelfertigung statt Serienvarianten",
-     "psipenta.de", "Einschätzung"),
+     "S20", "Einschätzung"),
     (13, "ams.Solution", "ams.erp", "DE", "Cloud / On-Prem",
      "sehr hoch ETO (Einzel-/Auftragsfertiger)", "nicht belegt", "mittel",
      "ausgeschieden", "Stärke Losgröße-1-Projektgeschäft, aber 60 % des Umsatzes sind CTO-Serienvarianten; CZ fehlt",
-     "ams-erp.com", "Einschätzung"),
+     "–", "Einschätzung"),
     (14, "Asseco Solutions CZ", "HELIOS Nephrite/Green", "CZ", "Cloud / On-Prem",
      "mittel", "sehr hoch", "keine",
      "ausgeschieden", "Lokale CZ-Lösung, kein DE-Rollout (K4/K6) – höchstens Pilsen-Insel (widerspricht Ein-System-Ziel)",
-     "forbes.cz; helios.eu", "verifiziert (CZ-Marktführer lt. Forbes.cz)"),
+     "S14", "verifiziert"),
     (15, "Odoo", "Odoo Enterprise", "BE (EU)", "SaaS / On-Prem",
      "gering-mittel (Konfigurator für 2,3 Mio. Varianten fraglich)", "mittel", "mittel",
      "ausgeschieden", "K1 (Konfigurator) und Branchentiefe nicht belegt; Partnerqualität stark schwankend",
-     "odoo.com", "Einschätzung"),
+     "–", "Einschätzung"),
     (16, "Eigen", "Option 0: Modernisierung KVA-WARE (RPG → Java)", "–", "On-Prem",
      "nur Ist-Funktionen", "keine", "–",
      "ausgeschieden (K.o.)", "Erfüllt K1, K3, K4, K5, K6 nicht; Abhängigkeit verlagert sich nur auf Dienstleister; Beiratsbeschluss „zukunftsfähig“ nicht erfüllt",
-     "Mail Vogt 20.01.2026, Beiratsprotokoll Q3/2025", "Fallpaket"),
+     "S01", "Fallpaket"),
 ]
 
 # ---------------------------------------------------------------- Nutzwertanalyse
-SYSTEME = ["Business Central + ISV", "Asseco APplus", "IFS Cloud"]
-NWA = [  # Kriterium, Gewicht %, Scores BC, APplus, IFS, Begründung
-    ("Variantenkonfiguration & Variantenstückliste (CTO)", 15, (3, 5, 4), "BC nur über ISV-Erweiterung (PoC nötig); APplus Kernkompetenz Variantenfertigung; IFS Konfigurator vorhanden"),
-    ("Fertigung & Planung (MRP, Kapazität, Engpass Härterei, Mehrwerk, Rückmeldung)", 15, (3, 4, 4), "BC Standard ohne finite Planung → ISV; APplus/IFS mit Kapazitäts-/Feinplanung"),
-    ("Projektgeschäft ETO (Meilensteine, Anzahlung, Nachkalkulation)", 8, (3, 4, 5), "IFS Projektfertigung sehr stark; BC Projekte einfach"),
-    ("Service & Installed Base (Seriennr., Verträge, Field Service)", 10, (3, 4, 5), "IFS Service/FSM Marktstärke; BC Service Mgmt. Premium, mobil über Partner"),
-    ("Qualität & Rückverfolgbarkeit (Chargen, Prüfplanung, 8D)", 7, (3, 4, 4), "BC QM über ISV"),
-    ("Finanzen, Mandanten, Lokalisierung DE/CZ/CH, E-Rechnung", 12, (5, 3, 4), "BC: CZ-Lokalisierung durch Microsoft; APplus CZ unbestätigt"),
-    ("Integration & Technologie (PDM, Salesforce, API, Power BI, Entra ID)", 8, (5, 4, 4), "BC native M365/Power BI/Entra-Integration"),
-    ("Betriebsmodell & Datensouveränität (SaaS mit Plan B, EU, Offline-Puffer)", 8, (4, 5, 5), "BC US-Anbieter, aber Hosting/On-Prem möglich; APplus DE; IFS EU + kundenbetrieben"),
-    ("Partner DE+CZ & zeitliche Machbarkeit (Pilsen bis Q3/2027)", 10, (5, 2, 3), "BC: viele CZ-Partner, DataSoft kennt BC; APplus CZ offen; IFS CZ-Partner, aber längere Projekte"),
-    ("Usability Shopfloor/Lager, CZ-Oberfläche", 7, (4, 3, 3), "BC moderne Web-/Mobile-Oberfläche, CZ-Sprache"),
+SYSTEME = ["Business Central + ISV", "proALPHA", "IFS Cloud", "abas ERP"]
+NWA = [  # Kriterium, Gewicht %, Scores BC, proALPHA, IFS, abas, Begründung
+    ("Variantenkonfiguration & Variantenstückliste (CTO)", 14, (3, 5, 4, 4), "BC nur über ISV-Erweiterung (PoC nötig); proALPHA-Produktkonfigurator mit Stückliste/Arbeitsplan lt. Hersteller (S06); IFS/abas Konfigurator vorhanden"),
+    ("Fertigung & Planung (MRP, Kapazität, Engpass Härterei, Rückmeldung)", 14, (3, 4, 4, 4), "BC Standard ohne finite Planung → ISV; proALPHA/IFS/abas mit Kapazitäts-/Feinplanung (abas lt. S08)"),
+    ("Systemarchitektur Multi-Site (gruppenweite Bestände/Kapazitäten, IC-Aufträge)", 8, (3, 3, 5, 3), "Vorlesung (S21): Multi-Site behandelt IC-Auftrag wie internen Auftrag; BC, proALPHA, abas = Mehrmandanten-Systeme (IC über Belegaustausch); IFS: Gesellschaften + Standorte in einer Datenbank (Einschätzung, PoC)"),
+    ("Projektgeschäft ETO (Meilensteine, Anzahlung, Nachkalkulation)", 7, (3, 4, 5, 4), "IFS Projektfertigung sehr stark; BC Projekte einfach"),
+    ("Service & Installed Base (Seriennr., Verträge, Field Service)", 9, (3, 4, 5, 3), "IFS Service/FSM Marktstärke; BC Service Mgmt. Premium, mobil über Partner"),
+    ("Qualität & Rückverfolgbarkeit (Chargen, Prüfplanung, 8D)", 6, (3, 4, 4, 4), "BC QM über ISV"),
+    ("Finanzen, Mandanten, Lokalisierung DE/CZ/CH, E-Rechnung", 11, (5, 3, 4, 3), "BC: CZ-Lokalisierung durch Microsoft (S03); proALPHA/abas: CZ-Lokalisierung über Partner – im RFI belegen"),
+    ("Integration & Technologie (PDM, Salesforce, API, Power BI, Entra ID)", 7, (5, 4, 4, 4), "BC native M365/Power BI/Entra-Integration"),
+    ("Betriebsmodell & Datensouveränität (SaaS mit Plan B, EU, Offline-Puffer)", 8, (4, 5, 5, 5), "BC US-Anbieter, aber Hosting/On-Prem möglich; proALPHA/abas DE-Anbieter mit Cloud + On-Prem; IFS EU + kundenbetrieben"),
+    ("Partner DE+CZ & zeitliche Machbarkeit (Pilsen bis Q3/2027)", 9, (5, 3, 3, 3), "BC: viele CZ-Partner, DataSoft kennt BC; proALPHA/abas je ein CZ-Partner (S05, S07); IFS CZ-Partner, aber längere Projekte"),
+    ("Usability Shopfloor/Lager, CZ-Oberfläche", 7, (4, 3, 3, 3), "BC moderne Web-/Mobile-Oberfläche, CZ-Sprache"),
 ]
 SENS = {  # Szenario: Gewichte in Reihenfolge NWA
-    "Basis (Empfehlung)": [15, 15, 8, 10, 7, 12, 8, 8, 10, 7],
-    "Fokus Produktion (Vogt/Lang)": [22, 22, 8, 8, 7, 10, 5, 8, 5, 5],
-    "Fokus Zeit & Pilsen (Nováková/Haller)": [12, 12, 6, 8, 6, 15, 8, 8, 18, 7],
-    "Fokus Souveränität (Brenner/BR)": [14, 14, 8, 10, 7, 10, 7, 18, 6, 6],
+    "Basis (Empfehlung)": [14, 14, 8, 7, 9, 6, 11, 7, 8, 9, 7],
+    "Fokus Produktion (Vogt/Lang)": [20, 20, 8, 7, 7, 6, 9, 5, 8, 5, 5],
+    "Fokus Zeit & Pilsen (Nováková/Haller)": [11, 11, 8, 5, 7, 5, 14, 7, 8, 17, 7],
+    "Fokus Souveränität (Brenner/BR)": [13, 13, 7, 7, 9, 6, 9, 6, 18, 6, 6],
 }
 
 # ---------------------------------------------------------------- TCO
-TCO_SYS = ["Business Central + ISV", "BC Basis (günstige Variante)", "Asseco APplus", "IFS Cloud"]
-# Parameter: (Bezeichnung, Einheit, Werte je System, Quelle/Annahme)
+TCO_SYS = ["Business Central + ISV", "BC Basis (günstige Variante)", "proALPHA", "IFS Cloud", "abas ERP"]
+NWA_TO_TCO = [0, 2, 3, 4]  # TCO-Spalte je NWA-System
 TCO_PARAM = [
-    ("Vollnutzer", "Anzahl", (120, 120, 120, 120), "Mengengerüst bereinigt (W-07)"),
-    ("Light-/Team-User", "Anzahl", (110, 110, 110, 110), "Mengengerüst bereinigt (W-07)"),
-    ("Shopfloor-Geräte", "Anzahl", (30, 30, 30, 30), "Annahme: 30 geteilte Tablets/Terminals"),
-    ("Preis Vollnutzer", "€/Monat", (100, 100, 130, 170), "BC: Premium 110 USD lt. Microsoft-Preiserhöhung 11/2025 ≈ 100 €; APplus/IFS: ANNAHME (keine öffentlichen Listenpreise)"),
-    ("Preis Light-User", "€/Monat", (7.5, 7.5, 40, 50), "BC Team Member 8 USD; Rest ANNAHME"),
-    ("Preis Gerät", "€/Monat", (41, 41, 25, 40), "BC Device 45 USD; Rest ANNAHME"),
-    ("Branchen-Add-ons (Konfigurator, APS, QM, Service mobil)", "€/Vollnutzer/Monat", (30, 15, 0, 0), "ANNAHME: ISV-Erweiterungen auf AppSource; bei APplus/IFS im Standard"),
-    ("Hosting Private Cloud", "€/Jahr", (0, 0, 36000, 0), "ANNAHME APplus im DE-RZ des Anbieters"),
-    ("Subskriptionsanteil Jahr 1 (2027)", "%", (0.4, 0.4, 0.4, 0.4), "Ramp-up: Projekt- und Pilsen-Nutzer ab Q2/2027"),
-    ("Externe Beratertage", "PT", (420, 330, 550, 700), "ANNAHME aus Projektgröße (CTO+ETO+3 Länder); IFS umfangreicher"),
-    ("Tagessatz extern", "€/PT", (1150, 1150, 1250, 1350), "ANNAHME Marktüblich DE/CZ-Mischsatz"),
-    ("Interne Aufwände (Key User, IT)", "€ einmalig", (400000, 350000, 450000, 500000), "Mail Haller 19.01.: 350–450 T€"),
-    ("Datenbereinigung & Migration (extern)", "€ einmalig", (80000, 70000, 80000, 90000), "ANNAHME; Stücklisten-Qualität schlecht (Int. 04)"),
-    ("Schnittstellen (PDM, Salesforce, EDI, Kardex, Carrier)", "€ einmalig", (120000, 100000, 120000, 130000), "ANNAHME 5–6 Schnittstellen"),
-    ("Hardware Shopfloor/Scanner (BDE-Ersatz)", "€ einmalig", (90000, 90000, 90000, 90000), "ANNAHME 30 Tablets + 25 Scanner + Drucker"),
-    ("Schulung & Change (inkl. BR-Forderung)", "€ einmalig", (40000, 35000, 45000, 50000), "ANNAHME"),
-    ("Risikopuffer auf Einmalkosten", "%", (0.15, 0.15, 0.15, 0.15), "Erfahrungswert; 2016: Kostenüberschreitung"),
-    ("Anteil Einmalkosten in Jahr 1", "%", (0.6, 0.6, 0.6, 0.6), "Rest in Jahr 2"),
-    ("Betrieb/Support Partner (AMS)", "€/Jahr", (40000, 35000, 30000, 45000), "ANNAHME; Jahr 1 zu 50 %"),
-    ("2. Internetleitung Singen", "€/Jahr", (18000, 18000, 18000, 18000), "Int. 04 Brenner: ca. 18 T€/Jahr"),
+    ("Vollnutzer", "Anzahl", (120, 120, 120, 120, 120), "Mengengerüst bereinigt (W-07)"),
+    ("Light-/Team-User", "Anzahl", (110, 110, 110, 110, 110), "Mengengerüst bereinigt (W-07)"),
+    ("Shopfloor-Geräte", "Anzahl", (30, 30, 30, 30, 30), "Annahme: 30 geteilte Tablets/Terminals"),
+    ("Preis Vollnutzer", "€/Monat", (95.3, 95.3, 130, 170, 115), "BC Premium 95,30 € lt. Microsoft-Preisliste DE (S02); proALPHA/IFS/abas: ANNAHME (keine öffentlichen Listenpreise)"),
+    ("Preis Light-User", "€/Monat", (6.9, 6.9, 40, 50, 35), "BC Team Members 6,90 € (S02); Rest ANNAHME"),
+    ("Preis Gerät", "€/Monat", (41, 41, 25, 40, 25), "ANNAHME (BC-Gerätelizenz in EUR nicht öffentlich geprüft)"),
+    ("Branchen-Add-ons (Konfigurator, APS, QM, Service mobil)", "€/Vollnutzer/Monat", (30, 15, 0, 0, 0), "ANNAHME: ISV-Erweiterungen auf AppSource; bei proALPHA/IFS/abas im Standard"),
+    ("Hosting Private Cloud", "€/Jahr", (0, 0, 36000, 0, 30000), "ANNAHME Betrieb im DE-RZ des Anbieters/Partners"),
+    ("Subskriptionsanteil Jahr 1 (2027)", "%", (0.4, 0.4, 0.4, 0.4, 0.4), "Ramp-up: Projekt- und Pilsen-Nutzer ab Q2/2027"),
+    ("Externe Beratertage", "PT", (420, 330, 550, 700, 500), "ANNAHME aus Projektgröße (CTO+ETO+3 Länder); IFS umfangreicher"),
+    ("Tagessatz extern", "€/PT", (1150, 1150, 1250, 1350, 1200), "ANNAHME marktüblicher DE/CZ-Mischsatz"),
+    ("Interne Aufwände (Key User, IT)", "€ einmalig", (400000, 350000, 450000, 500000, 450000), "Mail Haller 19.01.: 350–450 T€"),
+    ("Datenbereinigung & Migration (extern)", "€ einmalig", (80000, 70000, 80000, 90000, 80000), "ANNAHME; Stücklisten-Qualität schlecht (Int. 04)"),
+    ("Schnittstellen (PDM, Salesforce, EDI, Kardex, Carrier)", "€ einmalig", (120000, 100000, 120000, 130000, 120000), "ANNAHME 5–6 Schnittstellen"),
+    ("Hardware Shopfloor/Scanner (BDE-Ersatz)", "€ einmalig", (90000, 90000, 90000, 90000, 90000), "ANNAHME 30 Tablets + 25 Scanner + Drucker"),
+    ("Schulung & Change (inkl. BR-Forderung)", "€ einmalig", (40000, 35000, 45000, 50000, 45000), "ANNAHME"),
+    ("Risikopuffer auf Einmalkosten", "%", (0.15, 0.15, 0.15, 0.15, 0.15), "Erfahrungswert; 2016: Kostenüberschreitung"),
+    ("Anteil Einmalkosten in Jahr 1", "%", (0.6, 0.6, 0.6, 0.6, 0.6), "Rest in Jahr 2"),
+    ("Betrieb/Support Partner (AMS)", "€/Jahr", (40000, 35000, 30000, 45000, 30000), "ANNAHME; Jahr 1 zu 50 %"),
+    ("2. Internetleitung Singen", "€/Jahr", (18000, 18000, 18000, 18000, 18000), "Int. 04 Brenner: ca. 18 T€/Jahr"),
+    ("Spanne niedrig (Faktor)", "Faktor", (0.85, 0.85, 0.85, 0.85, 0.85), "ANNAHME: günstiges Angebot, wenig Zusatzaufwand"),
+    ("Spanne hoch (Faktor)", "Faktor", (1.35, 1.35, 1.35, 1.35, 1.35), "ANNAHME: typische Überschreitung bei Mehraufwand Stammdaten/Konfigurator"),
 ]
 
 
@@ -552,7 +555,7 @@ def tco(i):
         b = p["Betrieb/Support Partner (AMS)"] * (0.5 if y == 1 else 1) + p["2. Internetleitung Singen"]
         years.append((s, e, b))
     total = sum(sum(t) for t in years)
-    return {"sub_jahr": sub, "einmal": einm, "puffer": puffer, "years": years, "total": total,
+    return {"low": total * p["Spanne niedrig (Faktor)"], "high": total * p["Spanne hoch (Faktor)"], "sub_jahr": sub, "einmal": einm, "puffer": puffer, "years": years, "total": total,
             "sub5": sum(t[0] for t in years), "einm5": einm + puffer, "betr5": sum(t[2] for t in years)}
 
 
@@ -593,11 +596,11 @@ STOER = [
 # ---------------------------------------------------------------- Lizenzmodelle
 # (System, Lizenzmodell, Nutzerarten, Shopfloor/Lager, Kauf möglich?, Konsequenz KVA, Prüfstatus)
 LIZENZ = [
-    ("Business Central", "Subskription pro Named User/Monat (SaaS); On-Prem/Hosting über Partner", "Essentials, Premium (nötig für Fertigung + Service), Team Member (lesen/leicht ändern)", "Device-Lizenz für geteilte Geräte (Tablets, Terminals)", "On-Prem-Lizenzierung über Partner – Konditionen prüfen", "120 Premium + 110 Team Member + 30 Devices; Branchen-Apps meist zusätzlich pro User/Monat", "BC-Preise USD verifiziert; Add-ons im RFP"),
-    ("Asseco APplus", "Kauflizenz + jährliche Wartung ODER Subskription (Cloud/Hybrid)", "projektspezifisch", "im RFP abfragen", "ja", "Passt zu Vogt („keine Miete auf Lebenszeit“) und zur Cloud-Präferenz der CFO", "lt. erp-software.org; keine öffentliche Preisliste"),
+    ("Business Central", "Subskription pro Named User/Monat (SaaS); On-Prem/Hosting über Partner", "Essentials 69,30 €, Premium 95,30 € (nötig für Fertigung + Service), Team Members 6,90 € (S02)", "Gerätelizenz für geteilte Tablets/Terminals", "On-Prem-Lizenzierung über Partner – Konditionen prüfen", "120 Premium + 110 Team Members + 30 Geräte; Branchen-Apps meist zusätzlich pro User/Monat", "EUR-Preise verifiziert (S02)"),
+    ("proALPHA", "Kauflizenz + Wartung oder Subskription (Business Cloud)", "Rollen-/Nutzerlizenzen", "im RFP abfragen", "ja (lt. Anbieterauftritt) – prüfen", "Passt zu Vogt (Kauf möglich) und CFO (Cloud möglich)", "ANNAHME – im RFP validieren"),
     ("IFS Cloud", "Subskription (auch bei kundenbetriebenem Betrieb)", "Vollnutzer / eingeschränkte Nutzer", "im RFP abfragen", "im RFP klären", "Höchste laufende Kosten; Mindestabnahmen prüfen", "ANNAHME – im RFP validieren"),
-    ("SAP S/4HANA Cloud Public", "Subskription nach Full Usage Equivalents (FUE)", "FUE-gewichtet nach Nutzungsart", "über FUE-Gewichtung", "nein", "nur SaaS → kein Plan B", "Einschätzung"),
-    ("D365 Finance + SCM", "Subskription pro User, Mindestmenge Volllizenzen", "Full, Activity, Team Member", "Device-Lizenzen", "nein", "Mindestmengen/Preisniveau über Rahmen", "Einschätzung"),
+    ("abas ERP", "Kauflizenz + Wartung oder Subskription (Cloud)", "Nutzerlizenzen", "im RFP abfragen", "ja – prüfen", "Mittleres Preisniveau angenommen", "ANNAHME – im RFP validieren"),
+    ("D365 Supply Chain Mgmt.", "Subskription pro User", "SCM 182 €, Premium 259,90 € pro Nutzer/Monat (S04)", "Device-Lizenzen", "nein", "Lizenz allein ≈ 1,3 Mio. € über 5 J. → über Rahmen", "verifiziert (S04)"),
     ("Option 0 KVA-WARE", "keine Lizenz, aber Dienstleistervertrag + IBM-Leasing bis 06/2029", "–", "Kaba-BDE (Ersatz nötig)", "–", "Kosten verlagern sich auf Dienstleister", "Fallpaket"),
 ]
 
@@ -605,8 +608,8 @@ LIZENZ = [
 LAENDER = [
     ("Deutschland (Singen)", "Inland", "GoBD + Verfahrensdoku, HGB (IFRS künftig Kann), E-Rechnung Versand ab 01.01.2027, NIS2, BetrVG § 87/90, Exportkontrolle (BAFA, Dual-Use)", "EUR, DATEV-Lohn-Schnittstelle, ELO-Archiv"),
     ("Tschechien (Plzeň)", "EU-Ausland", "Kontrollmeldung (kontrolní hlášení), Intrastat, Zusammenfassende Meldung/VIES, CZ-Rechnungslegung, steuerfreie innergemeinschaftliche Lieferung, Verrechnungspreise IC", "CZK, Oberfläche + Belege Tschechisch, lokaler Lohn-Dienstleister, CZ-sprachiger Partner"),
-    ("Schweiz (Kreuzlingen)", "Drittland (nicht EU)", "Zoll: Ausfuhranmeldung (ATLAS) + Ursprungsnachweise für jede Lieferung, MWST CH, QR-Rechnung, Datenschutz revDSG", "CHF, Bexio ablösen, Servicetechniker CH in Phase 1b"),
-    ("Datenstandort / Anbieter", "EU vs. USA", "EU-Rechenzentrum + AVV; bei US-Anbietern CLOUD Act als Restrisiko (Brenner, BR); Option Datenhaltung DE für Wehrtechnik abfragen", "BC: Azure EU-Region + Plan B Hosting DE; APplus DE; IFS EU (SE)"),
+    ("Schweiz (Kreuzlingen)", "Drittland (nicht EU)", "Zoll: Ausfuhranmeldung (ATLAS) + Ursprungsnachweise für jede Lieferung, MWST CH, QR-Rechnung, 5-Rappen-Rundung (Länderversion, S20), Datenschutz revDSG", "CHF, Bexio ablösen, Servicetechniker CH in Phase 1b"),
+    ("Datenstandort / Anbieter", "EU vs. USA", "EU-Rechenzentrum + AVV; bei US-Anbietern CLOUD Act als Restrisiko (Brenner, BR); Option Datenhaltung DE für Wehrtechnik abfragen", "BC: Azure EU-Region + Plan B Hosting DE; proALPHA/abas DE; IFS EU (SE)"),
 ]
 
 # ---------------------------------------------------------------- Stakeholder „abholen“
@@ -629,11 +632,48 @@ NOTES = {
        "Herr Vogt, der Konfigurator ist K.o.-Kriterium Nr. 1, genau wie Sie es gefordert haben. Frau Nováková, CZ-Lokalisierung und CZ-Oberfläche sind K.o. "
        "Fünf Konflikte müssen Sie als GF entscheiden – unsere Vorschläge stehen rechts. Viele Infos im Material waren veraltet oder irreführend (Anhang A9).",
     3: "Markt (ca. 1,5 Min.): 16 Optionen, auch die Modernisierung von KVA-WARE, Herr Vogt – die haben wir ernsthaft geprüft. Sie scheitert an 5 von 8 K.o.-Kriterien. "
-       "Die meisten Anbieter scheiden aus, weil sie keinen Partner in Tschechien haben. Übrig bleiben drei: Business Central, APplus und IFS.",
-    4: "Bewertung (ca. 2 Min.): IFS kann funktional am meisten, kostet aber 1,2 Mio. € mehr. Business Central hat das beste Verhältnis von Nutzen zu Kosten. "
+       "Viele Anbieter scheiden aus, weil sie keinen Partner in Tschechien haben oder nur US-Cloud ohne Plan B bieten. Übrig bleiben vier: Business Central, proALPHA, IFS und abas.",
+    4: "Bewertung (ca. 2 Min.): IFS kann funktional am meisten – auch weil es als Multi-Site-System Pilsen und Singen in einer Datenbank führt, wie in der Vorlesung gezeigt. Es kostet aber rund 1,2 Mio. € mehr. Business Central hat das beste Verhältnis von Nutzen zu Kosten. "
        "Frau Haller, wir haben Ihre 5-Jahres-TCO-Methode übernommen – und müssen ehrlich sagen: Mit 1,5 Mio. € ist keine seriöse Lösung machbar. "
        "Selbst in der Logik des Projektauftrags (Einführung + 3 Jahre Lizenzen) kostet BC rund 1,9 Mio. €, weil die internen Kosten mit 120 T€ viel zu niedrig angesetzt waren.",
     5: "Empfehlung (ca. 2,5 Min.): Business Central als Favorit – aber erst unterschreiben, wenn der Konfigurator im Test mit dem echten Baukasten funktioniert. Herr Vogt, Sie bewerten diesen Test. "
        "Pilsen geht zuerst live, Singen am 01.04.2028. Herr Brenner, Ihr Plan B: dieselbe Software kann beim deutschen Hoster laufen. "
        "Rechts stehen die acht Entscheidungen, die heute bei Ihnen liegen – allen voran Budget und Termin.",
 }
+
+# ---------------------------------------------------------------- Gemeinsames Testskript (Drehbuch-Demo / PoC)
+TESTS = [
+    ("T1 · Konfigurator", "20 reale Baukasten-Varianten inkl. 3 ungültiger Kombinationen: Regelprüfung, Preis mit Metallzuschlag, Termin, erzeugte Stückliste + Arbeitsplan", "K1 · V-001, P-001"),
+    ("T2 · PDM-Revision", "Freigabe Revision C in SolidWorks PDM; offener Auftrag auf Revision A darf nicht stillschweigend wechseln; Änderungsprotokoll", "K8 · P-002"),
+    ("T3 · Engpassplanung", "Härterei mit Ofencharge nach Werkstoff/Härteverfahren, Verzahnung, Fremdbearbeitung, Gehäuse-Zulauf aus Pilsen; Eilauftrag simulieren", "P-004, P-005, V-004"),
+    ("T4 · Rückverfolgung", "Gusscharge → Härtecharge → Fertigungsauftrag → Seriennummer → Kunde; Rückrufliste + Zeugnis 3.1 in ≤ 2 Stunden", "K5 · Q-001, S-001"),
+    ("T5 · Ausfall & Shopfloor", "Internet 4 h trennen: Rückmeldungen puffern und ohne Verlust/Doppelbuchung nachsynchronisieren; Auswertung erst ab 5 Personen (BR)", "P-016, P-009, B-001"),
+    ("T6 · Gruppe DE/CZ/CH", "Lieferung Pilsen → Singen als Intercompany-Vorgang, CZ-Kontrollmeldung, Schweizer QR-Rechnung/MWST, Konsolidierung mit IC-Eliminierung", "K3, K4 · F-002, F-006, F-007"),
+]
+
+# ---------------------------------------------------------------- Quellen (nummeriert, Harvard-nah)
+QUELLEN = [
+    ("S01", "HTWG Konstanz (2026) Fallpaket KVA – ERP-Auswahl (Aufgabenstellung, Ordner 01–07). Moodle, Kurs ERP-Systeme.", "Fallpaket", "Alle Fallfakten"),
+    ("S02", "Microsoft (2026) Dynamics 365 Business Central – Preise. https://www.microsoft.com/de-de/dynamics-365/products/business-central/pricing (Abruf 29.10.2026).", "Hersteller, verifiziert", "Essentials 69,30 €, Premium 95,30 €, Team Members 6,90 € je Nutzer/Monat"),
+    ("S03", "Microsoft Learn (2025) Czech Local Functionality – Business Central. https://learn.microsoft.com/dynamics365/business-central/localfunctionality/czech/czech-local-functionality (Abruf 29.10.2026).", "Hersteller, verifiziert", "CZ-Lokalisierung durch Microsoft"),
+    ("S04", "Microsoft (2026) Dynamics 365 Supply Chain Management – Preise. https://www.microsoft.com/de-de/dynamics-365/products/supply-chain-management/pricing (Abruf 29.10.2026).", "Hersteller, verifiziert", "182 €, Premium 259,90 € je Nutzer/Monat"),
+    ("S05", "Proalpha (2026) Proalpha locations. https://proalpha.com/en/about-us/proalpha-locations (Abruf 29.10.2026).", "Hersteller, verifiziert (Suche)", "SPC solutions s.r.o., Zlín: Sales Partner"),
+    ("S06", "Proalpha (2026) Produktkonfigurator. https://www.proalpha.com/de/erp-system-mittelstand/prozesse/produktkonfigurator (Abruf 29.10.2026).", "Hersteller (Herstellerangabe)", "Konfigurator mit Stückliste/Arbeitsplan – im PoC prüfen"),
+    ("S07", "openPR (o. J.) Czech distributor of screws selects abas ERP. https://www.openpr.com/news/30626/czech-distributor-of-screws-selects-abas-erp.html (Abruf 29.10.2026).", "Pressemeldung", "amotIQ s.r.o. als abas-Partner CZ/SK"),
+    ("S08", "abas (2026) Fertigung. https://abas-erp.com/de/produkt/fertigung (Abruf 29.10.2026).", "Hersteller (Herstellerangabe)", "APS/Feinplanung, Projektfertigung"),
+    ("S09", "IFS (2026) Find a partner: CDC Data. https://www.ifs.com/en/partners/find-a-partner/cdc-data (Abruf 29.10.2026).", "Hersteller, verifiziert", "IFS-Partner CZ/SK"),
+    ("S10", "Lupa.cz (2010) IFS slaví 10 let na českém a slovenském trhu. https://www.lupa.cz/tiskove-zpravy/ifs-slavi-10-let-na-ceskem-a-slovenskem-trhu/ (Abruf 29.10.2026).", "Pressemitteilung", "IFS in CZ seit 2000"),
+    ("S11", "SoftwareConnect (2025) IFS Cloud Review. https://softwareconnect.com/reviews/ifs-cloud/ (Abruf 29.10.2026).", "Sekundärquelle", "ETO, Deployment-Optionen"),
+    ("S12", "Infor (o. J.) FINIDR meets demand for more complex production capabilities with Infor SyteLine and Infor CPQ. https://www.infor.com/resources/finidr-meets-complex-production-demands-with-infor (Abruf 29.10.2026).", "Hersteller-Fallstudie", "ITeuro Gold Partner CZ/SK"),
+    ("S13", "erp-software.org (2025) APplus. https://erp-software.org/software/applus/ (Abruf 29.10.2026).", "Sekundärquelle", "Zielgruppe, Betriebsmodelle, keine Preisliste"),
+    ("S14", "Forbes Česko (2024) Helios je moderní nástroj pro firmy v 21. století. https://forbes.cz/helios-je-moderni-nastroj-pro-firmy-v-21-stoleti/ (Abruf 29.10.2026).", "Presse", "Asseco CZ vertreibt HELIOS"),
+    ("S15", "SAP (2025) Knowledge Base Article 3744200. https://userapps.support.sap.com/sap/support/knowledge/en/3744200 (Abruf 29.10.2026).", "Hersteller, verifiziert", "Kein Outbound-E-Invoicing CZ in DRC (Public Edition)"),
+    ("S16", "Industrial Production (2019) Forterro kauft abas Software. https://www.industrial-production.de/software/erp-software-forterro-kauft-abas-software.htm (Abruf 29.10.2026).", "Fachpresse", "abas gehört zu Forterro"),
+    ("S17", "IHK Region Stuttgart (2026) E-Rechnungen – Ende der Übergangsfrist für Unternehmen mit mehr als 800.000 Euro Umsatz. https://www.ihk.de/stuttgart/fuer-unternehmen/recht-und-steuern/steuerrecht/steuermeldungen/e-rechnungen-5864496 (Abruf 29.10.2026).", "Kammer", "Ausstellungspflicht ab 01.01.2027 bei Vorjahresumsatz > 800 T€"),
+    ("S18", "Bundesministerium der Finanzen (2026) FAQ E-Rechnung. https://www.bundesfinanzministerium.de/Content/DE/FAQ/e-rechnung.html (Abruf durch Projektgruppe 29.10.2026).", "Behörde (Primärquelle)", "Übergangsregeln – Originaltext prüfen"),
+    ("S19", "usd AG (2025) NIS2UmsuCG offiziell in Kraft. https://www.usd.de/nis2umsucg-offiziell-in-kraft/ (Abruf 29.10.2026).", "Sekundärquelle", "In Kraft seit 06.12.2025"),
+    ("S20", "Kurz, F. (2026) ERP-Systeme, Teil 1. Vorlesungsunterlagen, HTWG Konstanz.", "Vorlesung", "Länderversionen, ERP-Systemarchitekturen (Multi-Site/Mehrmandanten/Zwei-System), ZUGFeRD"),
+    ("S21", "Martin, R. und Kurz, F. (2024) ERP-Systeme, Teil 2. Vorlesungsunterlagen, HTWG Konstanz.", "Vorlesung", "Multi-Site vs. Mehrmandanten, IC-Auftrag, SaaS vs. Standardsoftware, „Datenquellen [zu Marktanteilen] meist zweifelhaft“"),
+    ("S22", "Gronau, N. (2004) Enterprise Resource Planning und Supply Chain Management. München: Oldenbourg (zit. nach S20/S21).", "Fachliteratur", "Vor-/Nachteile ERP"),
+    ("S23", "Buxmann, P. et al. (o. J.) Software as a Service. TU Darmstadt (zit. nach S21).", "Fachliteratur", "Vor-/Nachteile SaaS"),
+]

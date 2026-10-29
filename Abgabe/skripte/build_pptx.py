@@ -36,8 +36,9 @@ BLACK = RGBColor(0x10, 0x10, 0x10)
 prs = Presentation()
 prs.slide_width, prs.slide_height = Inches(13.333), Inches(7.5)
 BLANK = prs.slide_layouts[6]
-T = [D.tco(i) for i in range(4)]
-NW = [sum(c[1] * c[2][j] for c in D.NWA) / 100 for j in range(3)]
+NW = [sum(c[1] * c[2][j] for c in D.NWA) / 100 for j in range(len(D.SYSTEME))]
+T = [D.tco(i) for i in range(len(D.TCO_SYS))]
+TN = [T[k] for k in D.NWA_TO_TCO]
 
 
 def mio(x):
@@ -222,33 +223,30 @@ text(sl, 6.2, 5.85, 6.7, 0.8,
 source(sl, "Anforderungskatalog Rohfassung 12.02.2026; Interviews 01–12; Flipcharts 21.01.2026; Kick-off 02.12.2025; LK-Ergebnis 18.02.2026; BR-Schreiben 09.02.2026. Details: XLSX Blätter 1–3.")
 
 # ============================================================ FOLIE 3
-sl = slide("Markt: 16 Optionen geprüft – drei erfüllen alle K.o.-Kriterien und passen zu Größe und Zeitplan",
+sl = slide("Markt: 16 Optionen geprüft – vier erfüllen alle K.o.-Kriterien und passen zu Größe und Zeitplan",
            "3 · MARKTÜBERBLICK: LONGLIST → SHORTLIST", 3)
 stages = [
     (16, "Longlist", "Mittelstands-ERP für diskrete Fertiger in DACH/CZ + Option 0 (Modernisierung KVA-WARE)", 6.0),
-    (14, "Filter K1/K2: Konfigurator + Projektfertigung", "raus: Option 0 (KVA-WARE modernisieren), Odoo", 5.0),
-    (6, "Filter K4/K6: Lokalisierung + Partner DE UND CZ", "raus: Infor CSI, Infor LN, Epicor, PSIpenta, ams.erp, HELIOS; Nachrücker: proALPHA, abas (CZ nicht belegt)", 4.0),
-    (3, "Filter Größe, Kosten, Betriebsmodell, Akzeptanz", "raus: SAP S/4 Public (nur SaaS, kein E-Invoicing CZ), SAP S/4 Private, D365 F&SCM (überdimensioniert)", 3.0),
+    (14, "Filter K1/K2: Konfigurator + Projektfertigung", "raus: Option 0 (KVA-WARE modernisieren), Odoo", 5.2),
+    (8, "Filter K4/K6: Lokalisierung + Partner DE UND CZ", "raus: Infor LN, Epicor, PSIpenta, ams.erp, HELIOS (nur CZ); Nachrücker: APplus (kein APplus-Partner in CZ belegt)", 4.4),
+    (4, "Filter Größe, Kosten, Betriebsmodell, Akzeptanz", "raus: SAP S/4 Public (nur SaaS, kein E-Invoicing CZ), SAP S/4 Private + D365 SCM (über Rahmen), Infor CSI (US-Cloud ohne Plan B)", 3.6),
 ]
 for i, (n, h, t, w) in enumerate(stages):
-    y = 1.5 + i * 1.12
+    y = 1.45 + i * 1.02
     x = 0.5 + (6.0 - w) / 2
-    text(sl, x, y, w, 0.95, [(f"{n}", {"bold": True, "size": 22, "color": WHITE, "align": PP_ALIGN.CENTER}),
-                             (h, {"size": 10, "color": WHITE, "align": PP_ALIGN.CENTER})],
-         fill=NAVY if i < 3 else GREEN, anchor=MSO_ANCHOR.MIDDLE)
-    text(sl, 6.7, y + 0.05, 6.2, 0.95, t, size=10.5, anchor=MSO_ANCHOR.MIDDLE)
-short = [
-    ("Shortlist", "Profil", "Betrieb", "CZ"),
-    ("MS Dynamics 365 Business Central + Branchenlösung", "Günstig, schnell, großes Partnernetz; Konfigurator/APS über Erweiterung", "SaaS; Hosting/On-Prem als Plan B", "Lokalisierung durch Microsoft"),
-    ("Asseco APplus", "Deutscher Spezialist Variantenfertigung", "Cloud, Hybrid, On-Prem", "Asseco-Organisation CZ; APplus-Lokalisierung offen"),
-    ("IFS Cloud", "Stärkste Abdeckung ETO, Service, Instandhaltung", "SaaS oder kundenbetrieben", "Seit 2000 in CZ, Partner z. B. CDC Data"),
+    text(sl, x, y, w, 0.88, [(f"{n}", {"bold": True, "size": 20, "color": WHITE, "align": PP_ALIGN.CENTER}),
+                             (h, {"size": 9.5, "color": WHITE, "align": PP_ALIGN.CENTER})],
+         fill=NAVY if i < 3 else TEAL, anchor=MSO_ANCHOR.MIDDLE)
+    text(sl, 6.7, y + 0.03, 6.2, 0.85, t, size=10, anchor=MSO_ANCHOR.MIDDLE)
+cards = [
+    ("Business Central + Branchenlösung", "Abo je Nutzer · SaaS, Hosting als Plan B · CZ-Lokalisierung von Microsoft · Mehrmandanten", "S02, S03"),
+    ("proALPHA", "Kauf oder Abo · Spezialist Variantenfertigung · CZ: SPC solutions (Zlín) · Mehrmandanten", "S05, S06"),
+    ("IFS Cloud", "Abo · ETO/Service-stark · EU-Anbieter, SaaS oder kundenbetrieben · Multi-Site", "S09–S11"),
+    ("abas ERP", "Kauf oder Abo · Fertigungs-Mittelstand · CZ: amotIQ · Mehrmandanten", "S07, S08"),
 ]
-# Shortlist als Karte unter dem Trichter
-text(sl, 0.5, 5.95, 12.4, 0.75,
-     [("Shortlist:  ① Business Central + Branchenlösung – Abo je Nutzer, SaaS mit Hosting als Plan B, CZ-Lokalisierung von Microsoft", {"size": 9.5, "bold": True, "color": NAVY}),
-      ("② Asseco APplus – Kauflizenz oder Abo, Spezialist Variantenfertigung, CZ-Lokalisierung im RFI bestätigen   ③ IFS Cloud – Abo, ETO/Service-stark, EU-Anbieter, SaaS oder kundenbetrieben", {"size": 9.5, "bold": True, "color": NAVY})],
-     fill=LIGHT, margin=0.1, anchor=MSO_ANCHOR.MIDDLE)
-source(sl, "Herstellerseiten und Primärquellen (Abruf 10/2026): learn.microsoft.com (BC CZ-Lokalisierung), erp-software.org/applus, ifs.com Partnerverzeichnis, SAP KBA 3744200; vollständige Longlist mit Begründung: XLSX Blatt 5, Anhang A7; Lizenzmodelle: Anhang A8.")
+for i, (h, t, q) in enumerate(cards):
+    text(sl, 0.5 + i * 3.1, 5.6, 2.95, 1.1, [(f"{i+1}  {h}", {"bold": True, "size": 10.5, "color": NAVY}), (t, {"size": 8.5}), (q, {"size": 7.5, "color": GRAY})], fill=WHITE, margin=0.08)
+source(sl, "S02–S16, Abruf 29.10.2026; Systemarchitektur (Multi-Site/Mehrmandanten) nach Kurz (2026) und Martin/Kurz (2024) = S20, S21. Marktanteilsstudien bewusst nicht genutzt („Datenquellen meist zweifelhaft“, S21). Longlist komplett: Anhang A7.")
 
 # ============================================================ FOLIE 4
 sl = slide("IFS bietet den höchsten Nutzen – Business Central das beste Verhältnis von Nutzen zu Kosten",
@@ -274,7 +272,7 @@ pl.data_labels.font.size, pl.data_labels.font.bold = Pt(11), True
 pl.series[0].format.fill.solid(); pl.series[0].format.fill.fore_color.rgb = NAVY
 
 cd2 = CategoryChartData()
-cd2.categories = ["BC + Branchen-lösung", "BC Basis (günstig)", "APplus", "IFS Cloud"]
+cd2.categories = ["BC + Branchen-lösung", "BC Basis (günstig)", "proALPHA", "IFS Cloud", "abas"]
 cd2.add_series("Subskription", [round(t["sub5"] / 1e6, 2) for t in T])
 cd2.add_series("Einführung inkl. Puffer", [round(t["einm5"] / 1e6, 2) for t in T])
 cd2.add_series("Betrieb", [round(t["betr5"] / 1e6, 2) for t in T])
@@ -290,31 +288,33 @@ c2.legend.include_in_layout = False
 c2.legend.font.size = Pt(8.5)
 c2.value_axis.has_major_gridlines = False
 c2.value_axis.maximum_scale = 4.0
+c2.plots[0].gap_width = 60
 c2.value_axis.tick_labels.font.size = Pt(9)
 c2.category_axis.tick_labels.font.size = Pt(8.5)
 for s, col in zip(c2.plots[0].series, [NAVY, ORANGE, RGBColor(0x9A, 0xA8, 0xB5)]):
     s.format.fill.solid(); s.format.fill.fore_color.rgb = col
-rows = [("", "BC + Branchen-lösung", "APplus", "IFS Cloud"),
-        ("Nutzwert", f"{NW[0]:.2f}".replace(".", ","), f"{NW[1]:.2f}".replace(".", ","), f"{NW[2]:.2f}".replace(".", ",")),
-        ("TCO 5 J.", f"{mio(T[0]['total'])} Mio. €", f"{mio(T[2]['total'])} Mio. €", f"{mio(T[3]['total'])} Mio. €"),
-        ("Nutzwert je Mio. €", f"{NW[0]/T[0]['total']*1e6:.2f}".replace(".", ","), f"{NW[1]/T[2]['total']*1e6:.2f}".replace(".", ","), f"{NW[2]/T[3]['total']*1e6:.2f}".replace(".", ",")),
-        ("Pilsen bis Q3/2027", "realistisch", "unsicher", "knapp"),
-        ("Hauptrisiko", "Konfigurator über Partner", "CZ offen", "Kosten, Komplexität")]
-fills = {(3, 1): OK_F, (1, 3): OK_F, (4, 1): OK_F,
-         (4, 2): BAD_F, (5, 2): BAD_F}
-table(sl, 9.25, 1.5, 3.65, 3.2, rows, [1.0, 1.0, 0.8, 0.85], size=9.5, fills=fills)
+r2 = lambda x: f"{x:.2f}".replace(".", ",")
+rows = [("", "BC", "proALPHA", "IFS", "abas"),
+        ("Nutzwert", *[r2(v) for v in NW]),
+        ("TCO 5 J. (Mio. €)", *[mio(t["total"]) for t in TN]),
+        ("Spanne (Mio. €)", *[f"{mio(t['low'])}–{mio(t['high'])}" for t in TN]),
+        ("Nutzwert je Mio. €", *[r2(NW[j] / TN[j]["total"] * 1e6) for j in range(4)]),
+        ("Pilsen bis Q3/2027", "realistisch", "knapp", "knapp", "knapp"),
+        ("Hauptrisiko", "Konfigurator", "CZ-Lokal.", "Kosten", "CZ-Lokal.")]
+fills = {(4, 1): OK_F, (1, 3): OK_F, (5, 1): OK_F}
+table(sl, 9.2, 1.5, 3.75, 3.25, rows, [1.05, 0.7, 0.7, 0.6, 0.7], size=8)
 text(sl, 0.5, 4.95, 6.1, 1.75,
      [("So lesen wir das Ergebnis", {"bold": True, "color": NAVY, "size": 12}),
-      ("• IFS liegt 0,34 Punkte vor BC (ETO, Service, Konfigurator) – kostet aber rund 1,2 Mio. € (+46 %) mehr.", {"size": 10.5}),
-      ("• BC: bester Nutzen je Euro, einziger Weg zu Pilsen vor Ende 2027, Hosting als Plan B; bei „Fokus Zeit & Pilsen“ gleichauf mit IFS (A3).", {"size": 10.5}),
-      ("• APplus fällt wegen offener CZ-Lokalisierung zurück – bei Bestätigung im RFI Platz 2.", {"size": 10.5}),
-      ("• Vollkosten je Nutzer und Monat: BC ≈ 190 €, APplus ≈ 230 €, IFS ≈ 275 € (230 Nutzer, 60 Monate).", {"size": 10.5})])
+      ("• IFS liegt vorn (ETO, Service, Multi-Site-Architektur), kostet aber rund 1,2 Mio. € mehr als BC; proALPHA ist stabil Platz 2.", {"size": 10}),
+      ("• BC: bester Nutzen je Euro, schnellster Weg für Pilsen, Hosting als Plan B; bei „Fokus Zeit & Pilsen“ nahe an IFS (A3).", {"size": 10}),
+      ("• abas ist günstiger als proALPHA, fällt aber bei Service und CZ-Lokalisierung zurück.", {"size": 10}),
+      ("• Vollkosten je Nutzer und Monat: BC ≈ 186 €, abas ≈ 212 €, proALPHA ≈ 230 €, IFS ≈ 275 €.", {"size": 10})])
 text(sl, 6.8, 4.95, 6.1, 1.75,
      [("Budget: keine Option passt in 1,2 Mio. € oder < 1 Mio. €", {"bold": True, "color": RED, "size": 12}),
-      ("• Der Projektauftrag rechnet interne Kosten mit 120 T€ (realistisch 350–450 T€). Selbst in seiner Logik (Einführung + 3 J. Lizenzen) kostet BC ≈ 1,9 Mio. €.", {"size": 10.5}),
-      (f"• Auch die günstige Variante (BC Basis, {mio(T[1]['total'])} Mio. €) liegt über der CFO-Grenze von 1,5 Mio. €.", {"size": 10.5}),
-      ("• Einordnung: 0,5–0,9 % vom Umsatz p. a.; Nutzen 0,5–0,9 Mio. € p. a. + 3–4 Mio. € Liquidität aus Bestandsabbau.", {"size": 10.5})])
-source(sl, "Eigene Nutzwertanalyse (10 Kriterien, Gewichte vorab festgelegt) und TCO-Modell, XLSX Blätter 6–9. BC-Preise lt. Microsoft-Preisänderung 11/2025 (USD→EUR); APplus/IFS-Preise nicht öffentlich = gekennzeichnete Annahmen, im RFP zu validieren.")
+      ("• Interne Kosten im Projektauftrag 120 T€ statt realistisch 350–450 T€. Selbst in seiner Logik (Einführung + 3 J. Lizenzen) kostet BC ≈ 1,9 Mio. €.", {"size": 10}),
+      (f"• Auch die günstige Variante (BC Basis, {mio(T[1]['total'])} Mio. €) liegt über der CFO-Grenze von 1,5 Mio. €.", {"size": 10}),
+      ("• Einordnung: 0,5–0,9 % vom Umsatz p. a.; Nutzen 0,5–0,9 Mio. € p. a. + 3–4 Mio. € Liquidität aus Bestandsabbau.", {"size": 10})])
+source(sl, "Eigene Nutzwertanalyse (11 Kriterien, Gewichte vorab festgelegt) und TCO-Modell, XLSX Blätter 6–9. BC-Preise lt. Microsoft-Preisliste DE (S02); proALPHA/IFS/abas-Preise nicht öffentlich = gekennzeichnete Annahmen, Spanne −15 %/+35 %.")
 
 # ============================================================ FOLIE 5
 sl = slide("Empfehlung: Business Central + Branchenlösung als Favorit – Vertrag erst nach bestandenem Konfigurator-Test",
@@ -327,7 +327,7 @@ for i, q in enumerate(quarters):
     text(sl, x0 + i * wq, y0, wq, 0.28, q, size=8, color=GRAY, align=PP_ALIGN.CENTER)
 bars = [
     ("Sofortmaßnahmen", "E-Rechnung-Konverter, NAV-Notfallsupport, Brugger-Doku, Stammdaten", 0, 2, ORANGE, "ab sofort"),
-    ("Ausschreibung + PoC", "RFP, Drehbuch-Demos, Konfigurator-PoC BC vs. IFS, Rahmen-BV", 0.15, 2, NAVY, "Vertrag 04/27"),
+    ("Ausschreibung + PoC", "RFP an 4 Anbieter, gleiches Testskript (A11), PoC BC vs. proALPHA", 0.15, 2, NAVY, "Vertrag 04/27"),
     ("Pilsen (Pilot)", "Template für die Gruppe, NAV-Brücke bis 09/2027", 2, 4, GREEN, "Go-live 01.10.27"),
     ("Singen + CH", "Kern: Konfigurator, Fertigung, Finanzen, QM, Service", 2.5, 6, NAVY, "Go-live 01.04.28"),
     ("Phase 2", "APS, Field-Service-App, Portal/Shop, Instandhaltung, CRM", 6, 9, GRAY, "ab H2/28"),
@@ -340,13 +340,13 @@ for k, (lab, det, s0, e, col, tip) in enumerate(bars):
 text(sl, 0.5, 4.05, 7.6, 0.3, "Was die Empfehlung für Sie bedeutet", size=12, bold=True, color=NAVY)
 srow = [("Wer", "Ihr Anliegen", "Unsere Antwort")] + [r for r in D.STAKE if r[0] != "Beirat"]
 table(sl, 0.5, 4.32, 7.6, 1.9, srow, [1.75, 2.75, 3.1], size=7)
-text(sl, 0.5, 6.42, 7.6, 0.3, "Bedingung (Lehre aus 2016): Vertrag erst nach bestandenem Konfigurator-PoC – sonst IFS (+1,2 Mio. €).",
+text(sl, 0.5, 6.42, 7.6, 0.3, "Bedingung (Lehre aus 2016): Vertrag erst nach bestandenem Konfigurator-PoC – sonst proALPHA (+0,6 Mio. €).",
      size=9, bold=True, color=RED)
 # Entscheidungen GF
 text(sl, 8.35, 1.4, 4.55, 5.3,
      [("Das muss die Geschäftsführung entscheiden", {"bold": True, "color": WHITE, "size": 12.5}),
       ("1  Budget: 5-J.-TCO bis 3,0 Mio. € freigeben (BC 2,6 Mio. € + Reserve) statt 1,2 Mio. €", {"color": WHITE, "size": 10.5, "after": 5}),
-      ("2  Funktionstiefe oder Kosten/Tempo: BC (Favorit) oder IFS – nach dem PoC im März 2027", {"color": WHITE, "size": 10.5, "after": 5}),
+      ("2  Kosten/Tempo oder Funktionstiefe: BC (Favorit) oder proALPHA/IFS – Entscheidung nach dem PoC im März 2027", {"color": WHITE, "size": 10.5, "after": 5}),
       ("3  Termin: Go-live Singen 01.04.2028 statt 01.01.2028; Bereitschaft Brugger + RPG-Dienstleister als Brücke", {"color": WHITE, "size": 10.5, "after": 5}),
       ("4  Pilsen zuerst: NAV-Überbrückung mit DataSoft bis 09/2027 verhandeln", {"color": WHITE, "size": 10.5, "after": 5}),
       ("5  Seriennummer für alle Antriebe – endgültig, Änderung nur per Lenkungskreis", {"color": WHITE, "size": 10.5, "after": 5}),
@@ -363,12 +363,13 @@ rows = [("ID", "Thema", "Aussage A", "Aussage B", "Lösungsvorschlag")] + [(w[0]
 table(sl, 0.4, 1.3, 12.55, 5.6, rows, [0.5, 1.15, 3.3, 3.6, 4.0], size=7)
 
 sl = slide("Anhang A2 – K.o.-Prüfung: Shortlist und Option 0", "ANHANG", "A2")
-ko = [("K.o.-Kriterium", "BC + Branchenlösung", "Asseco APplus", "IFS Cloud", "Option 0 KVA-WARE modernisiert")]
+ko = [("K.o.-Kriterium", "BC + Branchenlösung", "proALPHA", "IFS Cloud", "abas ERP", "Option 0")]
 vals = {
-    "K1": ("✓ über ISV – PoC", "✓", "✓", "✗"), "K2": ("✓ (Projekte, einfacher)", "✓", "✓", "✗ (Excel)"),
-    "K3": ("✓", "✓", "✓", "✗"), "K4": ("✓ (Microsoft CZ)", "? im RFI", "✓", "✗"),
-    "K5": ("✓", "✓", "✓", "✗"), "K6": ("✓", "? im RFI", "✓", "✗"),
-    "K7": ("✓ EU-RZ / Hosting DE", "✓ DE", "✓ EU", "✓ On-Prem"), "K8": ("✓", "✓", "✓", "teilweise"),
+    "K1": ("✓ über ISV – PoC", "✓ lt. Hersteller", "✓", "✓ PoC", "✗"), "K2": ("✓ (Projekte, einfacher)", "✓", "✓", "✓", "✗ (Excel)"),
+    "K3": ("✓ (Mehrmandanten + IC)", "✓ (Mehrmandanten)", "✓ (Multi-Site)", "✓ (Mehrmandanten)", "✗"),
+    "K4": ("✓ (Microsoft CZ)", "? im RFI", "✓", "? im RFI", "✗"),
+    "K5": ("✓", "✓", "✓", "✓", "✗"), "K6": ("✓", "✓ SPC solutions", "✓", "✓ amotIQ", "✗"),
+    "K7": ("✓ EU-RZ / Hosting DE", "✓ DE", "✓ EU", "✓ DE", "✓ On-Prem"), "K8": ("✓", "✓", "✓", "✓", "teilweise"),
 }
 fills = {}
 for i, k in enumerate(D.KO, 1):
@@ -376,31 +377,32 @@ for i, k in enumerate(D.KO, 1):
     ko.append((f"{k[0]} {k[1]}",) + v)
     for j, x in enumerate(v, 1):
         fills[(i, j)] = OK_F if x.startswith("✓") else WARN_F if x.startswith("?") or x.startswith("teil") else BAD_F
-table(sl, 0.5, 1.4, 12.3, 4.2, ko, [4.3, 2.2, 1.8, 1.6, 2.4], size=10.5, fills=fills)
+table(sl, 0.5, 1.4, 12.3, 4.2, ko, [3.7, 2.1, 1.7, 1.6, 1.7, 1.5], size=9.5, fills=fills)
 text(sl, 0.5, 5.8, 12.3, 0.9, "Option 0 (RPG→Java-Migration, 300–400 T€ lt. GF Technik) wurde bewusst geprüft: Sie verlagert die Abhängigkeit nur auf einen Dienstleister "
-     "und erfüllt 5 von 8 K.o.-Kriterien nicht. Nachrücker bei Ausfall eines Kandidaten: proALPHA, abas (CZ-Präsenz im RFI klären).", size=10.5, fill=LIGHT, margin=0.1)
+     "und erfüllt 5 von 8 K.o.-Kriterien nicht. Nachrücker bei Ausfall eines Kandidaten: APplus (APplus-Partner in CZ im RFI klären).", size=10.5, fill=LIGHT, margin=0.1)
 
 sl = slide("Anhang A3 – Nutzwertanalyse im Detail und Sensitivität", "ANHANG", "A3")
-rows = [("Kriterium", "Gew. %", "BC", "APplus", "IFS")] + [(c[0], c[1], *c[2]) for c in D.NWA] + [("Nutzwert", 100, *[de(v) for v in NW])]
-table(sl, 0.4, 1.3, 7.6, 5.1, rows, [5.0, 0.7, 0.6, 0.7, 0.6], size=9)
-srows = [("Szenario", "BC", "APplus", "IFS")]
+rows = [("Kriterium", "Gew. %", "BC", "proALPHA", "IFS", "abas")] + [(c[0], c[1], *c[2]) for c in D.NWA] + [("Nutzwert", 100, *[de(v) for v in NW])]
+table(sl, 0.4, 1.3, 7.7, 5.2, rows, [4.5, 0.6, 0.6, 0.8, 0.6, 0.6], size=8.5)
+srows = [("Szenario", "BC", "proALPHA", "IFS", "abas")]
 for name, w in D.SENS.items():
-    srows.append((name,) + tuple(de(sum(wi*c[2][j] for wi, c in zip(w, D.NWA))/100) for j in range(3)))
-table(sl, 8.3, 1.3, 4.6, 2.0, srows, [2.5, 0.7, 0.7, 0.7], size=9)
+    srows.append((name,) + tuple(de(sum(wi*c[2][j] for wi, c in zip(w, D.NWA))/100) for j in range(4)))
+table(sl, 8.3, 1.3, 4.65, 2.0, srows, [1.95, 0.6, 0.85, 0.6, 0.65], size=8.5)
 text(sl, 8.3, 3.45, 4.6, 3.0,
      [("Methodik", {"bold": True, "color": NAVY}),
       ("• Gewichte vor der Bewertung festgelegt, abgeleitet aus Umsatzanteilen (CTO 60 %) und Fristen.", {"size": 9.5}),
       ("• Skala 1–5: 3 = nur mit Partner-Erweiterung, 5 = Standard mit Marktstärke.", {"size": 9.5}),
+      ("• Neues Kriterium Systemarchitektur nach Vorlesung: Multi-Site führt IC-Aufträge wie interne Aufträge, Mehrmandanten über Belegaustausch (S20, S21).", {"size": 9.5}),
       ("• Kosten bewusst NICHT im Nutzwert, sondern getrennt als TCO → Kennzahl Nutzwert je Mio. €.", {"size": 9.5}),
       ("• Punkte beruhen auf Herstellerangaben und Sekundärquellen – in Drehbuch-Demos zu bestätigen.", {"size": 9.5})], size=9.5)
 
 sl = slide("Anhang A4 – TCO-Modell: Annahmen offengelegt", "ANHANG", "A4")
-rows = [("Parameter", "Einheit", "BC", "BC Basis", "APplus", "IFS", "Quelle / Annahme")]
+rows = [("Parameter", "Einheit", "BC", "BC Basis", "proALPHA", "IFS", "abas", "Quelle / Annahme")]
 for n, u, v, s in D.TCO_PARAM:
-    fmt = (lambda x: f"{round(x*100)} %") if u == "%" else (lambda x: de(x, 0) if float(x).is_integer() else de(x, 1))
+    fmt = (lambda x: f"{round(x*100)} %") if u == "%" else (lambda x: de(x, 2)) if u == "Faktor" else (lambda x: de(x, 0) if float(x).is_integer() else de(x, 1))
     rows.append((n, u, *[fmt(x) for x in v], s))
-rows.append(("TCO 5 Jahre", "€", *[f"{de(t['total']/1e6)} Mio." for t in T], "Summe 2027–2031"))
-table(sl, 0.4, 1.2, 12.55, 5.6, rows, [3.0, 1.15, 0.75, 0.75, 0.75, 0.75, 5.4], size=7)
+rows.append(("TCO 5 Jahre (Spanne)", "Mio. €", *[f"{mio(t['total'])} ({mio(t['low'])}–{mio(t['high'])})" for t in T], "Summe 2027–2031"))
+table(sl, 0.4, 1.2, 12.55, 5.6, rows, [2.9, 1.1, 0.7, 0.7, 0.75, 0.7, 0.7, 5.0], size=6.5)
 
 sl = slide("Anhang A5 – Risiken und Gegenmaßnahmen (Lehren aus 2016)", "ANHANG", "A5")
 risks = [("Risiko", "Ursache 2016 / Fundstelle", "Gegenmaßnahme", "Verantwortlich"),
@@ -419,9 +421,9 @@ sl = slide("Anhang A6 – Nächste Schritte bis zur Vertragsunterschrift (April 
 steps = [("Wann", "Schritt", "Ergebnis"),
          ("Dez 2026", "Beirat: Entscheidungsvorlage, Budgetrahmen, Termine (Folie 5)", "Mandat für Ausschreibung"),
          ("Dez 2026", "Sofortmaßnahmen: E-Rechnungs-Konverter, NAV-Notfallsupport, Brugger-Nutzungsstatistik + Doku, Stammdaten", "Fristen 2027 entschärft"),
-         ("Jan 2027", "Lastenheft finalisieren (Basis XLSX Blatt 3), RFP an 3 Anbieter + Partner DE/CZ; Rückfrage CZ-Lokalisierung APplus", "Vergleichbare Angebote"),
-         ("Feb 2027", "Drehbuch-Demos (je 2 Tage) mit KVA-Szenarien: Baukasten, Sonderantrieb, Härterei, Rückruf, IC Pilsen; Meister + 2 BR-Mitglieder bewerten", "Punkte der Nutzwertanalyse bestätigt"),
-         ("Mär 2027", "PoC Konfigurator (2–3 Wochen, Favorit + 1), Referenzbesuche DE und CZ, Festpreis-/Budgetangebote", "Go/No-Go je Kandidat"),
+         ("Jan 2027", "Lastenheft finalisieren (Basis XLSX Blatt 3), RFP an 4 Anbieter + Partner DE/CZ; CZ-Lokalisierung proALPHA/abas schriftlich belegen", "Vergleichbare Angebote"),
+         ("Feb 2027", "Drehbuch-Demos (je 2 Tage) mit identischem Testskript T1–T6 (Anhang A11); Meister + 2 BR-Mitglieder bewerten", "Punkte der Nutzwertanalyse bestätigt"),
+         ("Mär 2027", "PoC Konfigurator (2–3 Wochen, BC + proALPHA), Referenzbesuche DE und CZ, Festpreis-/Budgetangebote", "Go/No-Go je Kandidat"),
          ("Mär 2027", "Rahmen-Betriebsvereinbarung IT abschließen; Salesforce 1 Jahr verlängern", "Voraussetzung Vertrag"),
          ("Apr 2027", "Vertragsverhandlung (Exit-Klausel, AVV, SLA, Preisbindung 5 J.), LK-Beschluss, Unterschrift", "Projektstart Pilsen-Pilot")]
 table(sl, 0.4, 1.3, 12.55, 4.6, steps, [1.2, 8.0, 3.35], size=10.5)
@@ -454,18 +456,16 @@ text(sl, 0.35, 5.7, 12.65, 1.0,
      [("Folge für die Auswahl: Lokalisierung für DE, CZ und CH ist K.o.-Kriterium K4, mehrere Gesellschaften und Währungen K3. Schweiz-Lieferungen brauchen heute Papier-Zolldokumente "
        "(Interview 08) – Zoll/ATLAS-Anbindung ist Muss (L-006). Datenhaltung: EU-Rechenzentrum ist K7; die Schweiz erkennt das EU-Datenschutzniveau als angemessen an.", {"size": 10.5})], fill=LIGHT, margin=0.1)
 
-sl = slide("Anhang A11 – Quellen", "ANHANG", "A11")
-qs = ["Fallpaket KVA (HTWG Konstanz, ERP-Systeme): Aufgabenstellung, Ordner 01–07 inkl. Interviews 01–12, E-Mail-Verlauf, Beiratsprotokoll Q3/2025, Anforderungskatalog Rohfassung, Helpdesk-Export 2025",
-      "Microsoft Learn: Czech Local Functionality – Business Central (learn.microsoft.com/…/localfunctionality/czech/czech-local-functionality)",
-      "Business-Central-Preise ab 01.11.2025 (Essentials 80 USD, Premium 110 USD, Team Member 8 USD): alphavima.com/blog/business-central-pricing-guide; netsmartz.com",
-      "Asseco APplus: erp-software.org/software/applus; applus-erp.de · Asseco Solutions CZ / HELIOS: forbes.cz",
-      "IFS: ifs.com Partnerverzeichnis (CDC Data, CZ/SK); lupa.cz Pressemitteilung „IFS slaví 10 let na českém a slovenském trhu“; softwareconnect.com Review IFS Cloud",
-      "SAP: Knowledge Base Article 3744200 (kein Outbound E-Invoicing CZ in DRC, S/4HANA Cloud Public Edition)",
-      "proALPHA: proalpha.com; siemens.com Ecosystem · abas/Forterro: industrial-production.de",
-      "E-Rechnung: IHK Frankfurt „E-Rechnungspflicht ab 2025“; BMF-Schreiben zur E-Rechnung (Übergangsregeln § 27 Abs. 38 UStG)",
-      "NIS2UmsuCG in Kraft seit 06.12.2025: usd.de; secjur.com",
-      "Hinweis: Alle Herstellerangaben Stand Abruf 10/2026; Preise für APplus und IFS sind nicht öffentlich und als Annahmen gekennzeichnet."]
-text(sl, 0.5, 1.4, 12.3, 5.3, [("• " + q, {"size": 11, "after": 6}) for q in qs])
+sl = slide("Anhang A11 – Ein Testskript für alle Anbieter (Drehbuch-Demo und PoC)", "ANHANG", "A11")
+for i, (h, t, g) in enumerate(D.TESTS):
+    x = 0.5 + (i % 2) * 6.25
+    y = 1.35 + (i // 2) * 1.75
+    text(sl, x, y, 6.05, 1.55, [(h, {"bold": True, "size": 12, "color": NAVY}), (t, {"size": 10}), (g, {"size": 9, "color": TEAL, "bold": True})], fill=WHITE, margin=0.1)
+text(sl, 0.5, 6.62, 11.7, 0.3, "Für jeden Test: Daten vorab liefern, Ergebnis dokumentieren, Lücken/Add-ons/Partnerleistung getrennt bepreisen. Ein nicht bestandener K.o.-Test schlägt den Nutzwert.", size=9.5, bold=True)
+
+sl = slide("Anhang A12 – Quellen", "ANHANG", "A12")
+rows = [("ID", "Quelle", "Art / Prüfstatus")] + [(q[0], q[1], q[2]) for q in D.QUELLEN]
+table(sl, 0.35, 1.15, 12.65, 5.8, rows, [0.5, 10.0, 2.15], size=6.3)
 
 for i, sl_ in enumerate(prs.slides, 1):
     if i in D.NOTES:
