@@ -15,15 +15,23 @@ def de(x, nd=2):
     return f"{x:,.{nd}f}".replace(',', 'X').replace('.', ',').replace('X', '.')
 
 OUT = sys.argv[1]
-NAVY = RGBColor(0x1F, 0x4E, 0x79)
-ORANGE = RGBColor(0xC5, 0x5A, 0x11)
-GREEN = RGBColor(0x38, 0x76, 0x1D)
-RED = RGBColor(0xC0, 0x00, 0x00)
-GRAY = RGBColor(0x59, 0x59, 0x59)
+# HTWG-Design (Farben aus den Vorlesungsfolien übernommen)
+BG = RGBColor(0xD7, 0xE2, 0xEA)       # Hintergrund hellblau-grau
+NAVY = RGBColor(0x33, 0x3F, 0x4F)     # Schiefer (Tabellenkopf, dunkle Flächen)
+TEAL = RGBColor(0x00, 0x9A, 0x91)     # HTWG-Petrol (Akzent)
+ORANGE = TEAL
+GREEN = TEAL
+RED = RGBColor(0x10, 0x10, 0x10)
+GRAY = RGBColor(0x55, 0x5F, 0x6B)
+ROW = RGBColor(0xED, 0xF2, 0xF5)
+OK_F = RGBColor(0xCC, 0xEB, 0xE8)
+WARN_F = RGBColor(0xF3, 0xE9, 0xC6)
+BAD_F = RGBColor(0xF1, 0xD6, 0xD3)
+FONT = "Arial"
 GRUPPE = "Gruppe: [Name 1, Matr.-Nr.] · [Name 2, Matr.-Nr.] · [Name 3, Matr.-Nr.]"
-LIGHT = RGBColor(0xEE, 0xF3, 0xF8)
 WHITE = RGBColor(0xFF, 0xFF, 0xFF)
-BLACK = RGBColor(0x1A, 0x1A, 0x1A)
+LIGHT = WHITE   # Karten: weiß auf hellblauem Grund
+BLACK = RGBColor(0x10, 0x10, 0x10)
 
 prs = Presentation()
 prs.slide_width, prs.slide_height = Inches(13.333), Inches(7.5)
@@ -55,9 +63,12 @@ def box(sl, x, y, w, h, fill=None, line=None):
     return s
 
 
-def text(sl, x, y, w, h, paras, size=12, color=BLACK, bold=False, align=PP_ALIGN.LEFT, anchor=MSO_ANCHOR.TOP, fill=None, line=None, margin=0.05):
+def text(sl, x, y, w, h, paras, size=12, color=BLACK, bold=False, align=PP_ALIGN.LEFT, anchor=MSO_ANCHOR.TOP, fill=None, line=None, margin=0.05, bar=True):
     """paras: str oder Liste aus str / (str, dict)"""
     s = box(sl, x, y, w, h, fill, line)
+    if fill is WHITE and bar:
+        box(sl, x, y, 0.06, h, TEAL)
+        margin = max(margin, 0.14)
     tf = s.text_frame
     tf.word_wrap = True
     tf.vertical_anchor = anchor
@@ -78,24 +89,39 @@ def text(sl, x, y, w, h, paras, size=12, color=BLACK, bold=False, align=PP_ALIGN
         f.size = Pt(opts.get("size", size))
         f.bold = opts.get("bold", bold)
         f.color.rgb = opts.get("color", color)
-        f.name = "Calibri"
+        f.name = FONT
     return s
 
 
 def slide(title, kicker=None, num=None):
     sl = prs.slides.add_slide(BLANK)
-    box(sl, 0, 0, 13.333, 0.08, NAVY)
+    sl.background.fill.solid()
+    sl.background.fill.fore_color.rgb = BG
+    # HTWG-Wortmarke oben rechts
+    text(sl, 12.25, 0.22, 0.7, 0.75, [("H   T", {"align": PP_ALIGN.CENTER, "after": 0}), ("W", {"align": PP_ALIGN.CENTER, "after": 0}), ("G", {"align": PP_ALIGN.CENTER, "after": 0})],
+         size=11, bold=True, margin=0)
     if kicker:
-        text(sl, 0.5, 0.2, 12, 0.3, kicker, size=11, color=ORANGE, bold=True)
-    text(sl, 0.5, 0.45, 12.3, 0.9, title, size=24, color=NAVY, bold=True)
-    text(sl, 0.5, 7.08, 9, 0.3, "HTWG Konstanz · ERP-Systeme · Fallstudie KVA · Entscheidungsvorlage ERP 2028", size=9, color=GRAY)
+        text(sl, 0.5, 0.22, 11.5, 0.3, kicker, size=10.5, color=TEAL, bold=True)
+    text(sl, 0.5, 0.48, 11.6, 0.9, title, size=23, color=BLACK, bold=True)
+    text(sl, 0.5, 7.1, 9, 0.25, "HTWG Konstanz · ERP-Systeme · Fallstudie KVA", size=8, color=GRAY)
+    for dx in (10.9, 11.6):
+        d = sl.shapes.add_shape(MSO_SHAPE.OVAL, Inches(dx), Inches(7.19), Inches(0.07), Inches(0.07))
+        d.fill.solid(); d.fill.fore_color.rgb = BLACK; d.line.fill.background()
+        st = d._element.find(qn('p:style'))
+        if st is not None:
+            d._element.remove(st)
     if num:
-        text(sl, 12.2, 7.08, 0.7, 0.3, str(num), size=9, color=GRAY, align=PP_ALIGN.RIGHT)
+        c = sl.shapes.add_shape(MSO_SHAPE.OVAL, Inches(12.45), Inches(6.62), Inches(1.76), Inches(1.76))
+        c.fill.solid(); c.fill.fore_color.rgb = TEAL; c.line.fill.background()
+        st = c._element.find(qn('p:style'))
+        if st is not None:
+            c._element.remove(st)
+        text(sl, 12.62, 6.92, 0.7, 0.35, str(num), size=12, bold=True, color=WHITE, align=PP_ALIGN.CENTER)
     return sl
 
 
-def source(sl, t, y=6.78):
-    text(sl, 0.5, y, 12.3, 0.3, "Quellen: " + t, size=8, color=GRAY)
+def source(sl, t, y=6.75):
+    text(sl, 0.5, y, 11.7, 0.32, "Quellen: " + t, size=7.5, color=GRAY)
 
 
 def table(sl, x, y, w, h, rows, colw, size=10, header=True, fills=None):
@@ -112,7 +138,7 @@ def table(sl, x, y, w, h, rows, colw, size=10, header=True, fills=None):
             for p in c.text_frame.paragraphs:
                 for run in p.runs:
                     run.font.size = Pt(size)
-                    run.font.name = "Calibri"
+                    run.font.name = FONT
                     run.font.bold = header and i == 0
                     run.font.color.rgb = WHITE if header and i == 0 else BLACK
             c.fill.solid()
@@ -121,14 +147,14 @@ def table(sl, x, y, w, h, rows, colw, size=10, header=True, fills=None):
             elif fills and (i, j) in fills:
                 c.fill.fore_color.rgb = fills[(i, j)]
             else:
-                c.fill.fore_color.rgb = WHITE if i % 2 else LIGHT
+                c.fill.fore_color.rgb = WHITE if i % 2 else ROW
     return tb
 
 
 # ============================================================ FOLIE 1
-sl = slide("Warum jetzt? Bis Ende 2027 laufen fünf Fristen ab – das Alt-ERP kann keine davon halten",
+sl = slide("Warum jetzt? Fünf Fristen bis Ende 2027 – KVA-WARE hält keine davon",
            "1 · AUSGANGSLAGE UND HANDLUNGSDRUCK", 1)
-text(sl, 7.4, 0.1, 5.5, 0.34, GRUPPE, size=10, bold=True, color=NAVY, fill=LIGHT, align=PP_ALIGN.CENTER, anchor=MSO_ANCHOR.MIDDLE)
+text(sl, 0.5, 1.0, 7.7, 0.36, GRUPPE, size=10.5, bold=True, color=WHITE, fill=NAVY, anchor=MSO_ANCHOR.MIDDLE, margin=0.12)
 # Zeitstrahl
 box(sl, 0.6, 2.45, 7.6, 0.05, NAVY)
 events = [
@@ -150,9 +176,9 @@ text(sl, 0.6, 3.6, 3.7, 1.05,
 text(sl, 4.45, 3.6, 3.75, 1.05,
      [("Gescheitert: „KVA neu“ 2014–2016", {"bold": True, "size": 10.5, "color": RED}),
       ("SAP-Projekt nach 17 Monaten abgebrochen, 940 T€ ohne Ergebnis. Ursachen: kein Konfigurator-Konzept, Key User nicht frei, Stammdaten, revidierte Entscheidungen.", {"size": 9.5})],
-     fill=RGBColor(0xFC, 0xE4, 0xD6), margin=0.08)
+     fill=WHITE, margin=0.08)
 # KPIs
-text(sl, 8.7, 1.5, 4.2, 0.35, "Strategie 2030 ist mit heutiger IT nicht erreichbar", size=13, bold=True, color=NAVY)
+text(sl, 8.7, 1.5, 4.2, 0.35, "Strategie 2030: heute nicht erreichbar", size=13, bold=True, color=NAVY)
 kpis = [("Liefertermintreue", "58 %*", "> 92 %"), ("Durchlaufzeit Standard", "18 AT", "10 AT"), ("Lagerbestand", "18,9 Mio. €", "12 Mio. €"),
         ("Monatsabschluss Gruppe", "14 AT", "5 AT"), ("Wartungsverträge", "41", "300"), ("EBIT-Marge", "4,4 %", "9 %")]
 table(sl, 8.7, 1.9, 4.2, 2.4, [("Kennzahl", "2025", "Ziel")] + kpis, [2.0, 1.1, 1.1], size=10.5)
@@ -219,8 +245,8 @@ short = [
 ]
 # Shortlist als Karte unter dem Trichter
 text(sl, 0.5, 5.95, 12.4, 0.75,
-     [("Shortlist:  ① Business Central + Branchenlösung – Abo je Nutzer, SaaS mit Hosting als Plan B, CZ-Lokalisierung von Microsoft", {"size": 10.5, "bold": True, "color": NAVY}),
-      ("② Asseco APplus – Kauflizenz oder Abo, Spezialist Variantenfertigung, CZ-Lokalisierung im RFI bestätigen   ③ IFS Cloud – Abo, ETO/Service-stark, EU-Anbieter, SaaS oder kundenbetrieben", {"size": 10.5, "bold": True, "color": NAVY})],
+     [("Shortlist:  ① Business Central + Branchenlösung – Abo je Nutzer, SaaS mit Hosting als Plan B, CZ-Lokalisierung von Microsoft", {"size": 9.5, "bold": True, "color": NAVY}),
+      ("② Asseco APplus – Kauflizenz oder Abo, Spezialist Variantenfertigung, CZ-Lokalisierung im RFI bestätigen   ③ IFS Cloud – Abo, ETO/Service-stark, EU-Anbieter, SaaS oder kundenbetrieben", {"size": 9.5, "bold": True, "color": NAVY})],
      fill=LIGHT, margin=0.1, anchor=MSO_ANCHOR.MIDDLE)
 source(sl, "Herstellerseiten und Primärquellen (Abruf 10/2026): learn.microsoft.com (BC CZ-Lokalisierung), erp-software.org/applus, ifs.com Partnerverzeichnis, SAP KBA 3744200; vollständige Longlist mit Begründung: XLSX Blatt 5, Anhang A7; Lizenzmodelle: Anhang A8.")
 
@@ -233,6 +259,7 @@ cd.add_series("Nutzwert (max. 5,0)", [round(v, 2) for v in NW])
 gf = sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_CLUSTERED, Inches(0.5), Inches(1.45), Inches(4.0), Inches(3.3), cd)
 ch = gf.chart
 ch.has_legend = False
+ch.font.name = FONT
 ch.has_title = True
 ch.chart_title.text_frame.text = "Nutzwert (gewichtet, max. 5,0)"
 ch.chart_title.text_frame.paragraphs[0].runs[0].font.size = Pt(12)
@@ -254,6 +281,7 @@ cd2.add_series("Betrieb", [round(t["betr5"] / 1e6, 2) for t in T])
 gf2 = sl.shapes.add_chart(XL_CHART_TYPE.COLUMN_STACKED, Inches(4.7), Inches(1.45), Inches(4.4), Inches(3.3), cd2)
 c2 = gf2.chart
 c2.has_title = True
+c2.font.name = FONT
 c2.chart_title.text_frame.text = "TCO 2027–2031 in Mio. €"
 c2.chart_title.text_frame.paragraphs[0].runs[0].font.size = Pt(12)
 c2.has_legend = True
@@ -264,7 +292,7 @@ c2.value_axis.has_major_gridlines = False
 c2.value_axis.maximum_scale = 4.0
 c2.value_axis.tick_labels.font.size = Pt(9)
 c2.category_axis.tick_labels.font.size = Pt(8.5)
-for s, col in zip(c2.plots[0].series, [NAVY, ORANGE, RGBColor(0xA6, 0xA6, 0xA6)]):
+for s, col in zip(c2.plots[0].series, [NAVY, ORANGE, RGBColor(0x9A, 0xA8, 0xB5)]):
     s.format.fill.solid(); s.format.fill.fore_color.rgb = col
 rows = [("", "BC + Branchen-lösung", "APplus", "IFS Cloud"),
         ("Nutzwert", f"{NW[0]:.2f}".replace(".", ","), f"{NW[1]:.2f}".replace(".", ","), f"{NW[2]:.2f}".replace(".", ",")),
@@ -272,8 +300,8 @@ rows = [("", "BC + Branchen-lösung", "APplus", "IFS Cloud"),
         ("Nutzwert je Mio. €", f"{NW[0]/T[0]['total']*1e6:.2f}".replace(".", ","), f"{NW[1]/T[2]['total']*1e6:.2f}".replace(".", ","), f"{NW[2]/T[3]['total']*1e6:.2f}".replace(".", ",")),
         ("Pilsen bis Q3/2027", "realistisch", "unsicher", "knapp"),
         ("Hauptrisiko", "Konfigurator über Partner", "CZ offen", "Kosten, Komplexität")]
-fills = {(3, 1): RGBColor(0xC6, 0xEF, 0xCE), (1, 3): RGBColor(0xC6, 0xEF, 0xCE), (4, 1): RGBColor(0xC6, 0xEF, 0xCE),
-         (4, 2): RGBColor(0xFF, 0xC7, 0xCE), (5, 2): RGBColor(0xFF, 0xC7, 0xCE)}
+fills = {(3, 1): OK_F, (1, 3): OK_F, (4, 1): OK_F,
+         (4, 2): BAD_F, (5, 2): BAD_F}
 table(sl, 9.25, 1.5, 3.65, 3.2, rows, [1.0, 1.0, 0.8, 0.85], size=9.5, fills=fills)
 text(sl, 0.5, 4.95, 6.1, 1.75,
      [("So lesen wir das Ergebnis", {"bold": True, "color": NAVY, "size": 12}),
@@ -299,10 +327,10 @@ for i, q in enumerate(quarters):
     text(sl, x0 + i * wq, y0, wq, 0.28, q, size=8, color=GRAY, align=PP_ALIGN.CENTER)
 bars = [
     ("Sofortmaßnahmen", "E-Rechnung-Konverter, NAV-Notfallsupport, Brugger-Doku, Stammdaten", 0, 2, ORANGE, "ab sofort"),
-    ("Ausschreibung + PoC", "RFP, Drehbuch-Demos, Konfigurator-PoC BC vs. IFS, Rahmen-BV", 0.6, 2, NAVY, "Vertrag 04/27"),
+    ("Ausschreibung + PoC", "RFP, Drehbuch-Demos, Konfigurator-PoC BC vs. IFS, Rahmen-BV", 0.15, 2, NAVY, "Vertrag 04/27"),
     ("Pilsen (Pilot)", "Template für die Gruppe, NAV-Brücke bis 09/2027", 2, 4, GREEN, "Go-live 01.10.27"),
     ("Singen + CH", "Kern: Konfigurator, Fertigung, Finanzen, QM, Service", 2.5, 6, NAVY, "Go-live 01.04.28"),
-    ("Phase 2", "APS, Field-Service-App, Portal/Shop, Instandhaltung, CRM", 6, 9, RGBColor(0x7F, 0x7F, 0x7F), "ab H2/28"),
+    ("Phase 2", "APS, Field-Service-App, Portal/Shop, Instandhaltung, CRM", 6, 9, GRAY, "ab H2/28"),
 ]
 for k, (lab, det, s0, e, col, tip) in enumerate(bars):
     y = y0 + 0.32 + k * 0.48
@@ -311,9 +339,9 @@ for k, (lab, det, s0, e, col, tip) in enumerate(bars):
 # Was heißt das für Sie (Management abholen)
 text(sl, 0.5, 4.05, 7.6, 0.3, "Was die Empfehlung für Sie bedeutet", size=12, bold=True, color=NAVY)
 srow = [("Wer", "Ihr Anliegen", "Unsere Antwort")] + [r for r in D.STAKE if r[0] != "Beirat"]
-table(sl, 0.5, 4.35, 7.6, 2.0, srow, [1.75, 2.75, 3.1], size=7.5)
-text(sl, 0.5, 6.5, 7.6, 0.3, "Bedingung (Lehre aus 2016): Vertrag erst nach bestandenem Konfigurator-PoC – sonst IFS (+1,2 Mio. €). Risiken: Anhang A5.",
-     size=9.5, bold=True, color=RED)
+table(sl, 0.5, 4.32, 7.6, 1.9, srow, [1.75, 2.75, 3.1], size=7)
+text(sl, 0.5, 6.42, 7.6, 0.3, "Bedingung (Lehre aus 2016): Vertrag erst nach bestandenem Konfigurator-PoC – sonst IFS (+1,2 Mio. €).",
+     size=9, bold=True, color=RED)
 # Entscheidungen GF
 text(sl, 8.35, 1.4, 4.55, 5.3,
      [("Das muss die Geschäftsführung entscheiden", {"bold": True, "color": WHITE, "size": 12.5}),
@@ -329,7 +357,7 @@ text(sl, 8.35, 1.4, 4.55, 5.3,
 source(sl, "Eigene Empfehlung auf Basis XLSX Blätter 1–9; Termine aus Mail Nováková 04.02.2026, Int. 04 (Brenner), LK 18.02.2026; Nächste Schritte bis Vertrag: Anhang A6.")
 
 # ============================================================ ANHANG
-sl = slide("Anhang A1 – Die wichtigsten Widersprüche (Auszug aus 42, vollständig in XLSX Blatt 1)", "ANHANG", "A1")
+sl = slide("Anhang A1 – Wichtigste Widersprüche (alle 42 in XLSX Blatt 1)", "ANHANG", "A1")
 top = [w for w in D.WIDERSPRUECHE if w[8] == "hoch"][:13]
 rows = [("ID", "Thema", "Aussage A", "Aussage B", "Lösungsvorschlag")] + [(w[0], w[1], w[2], w[3], w[6]) for w in top]
 table(sl, 0.4, 1.3, 12.55, 5.6, rows, [0.5, 1.15, 3.3, 3.6, 4.0], size=7)
@@ -347,7 +375,7 @@ for i, k in enumerate(D.KO, 1):
     v = vals[k[0]]
     ko.append((f"{k[0]} {k[1]}",) + v)
     for j, x in enumerate(v, 1):
-        fills[(i, j)] = RGBColor(0xC6, 0xEF, 0xCE) if x.startswith("✓") else RGBColor(0xFF, 0xEB, 0x9C) if x.startswith("?") or x.startswith("teil") else RGBColor(0xFF, 0xC7, 0xCE)
+        fills[(i, j)] = OK_F if x.startswith("✓") else WARN_F if x.startswith("?") or x.startswith("teil") else BAD_F
 table(sl, 0.5, 1.4, 12.3, 4.2, ko, [4.3, 2.2, 1.8, 1.6, 2.4], size=10.5, fills=fills)
 text(sl, 0.5, 5.8, 12.3, 0.9, "Option 0 (RPG→Java-Migration, 300–400 T€ lt. GF Technik) wurde bewusst geprüft: Sie verlagert die Abhängigkeit nur auf einen Dienstleister "
      "und erfüllt 5 von 8 K.o.-Kriterien nicht. Nachrücker bei Ausfall eines Kandidaten: proALPHA, abas (CZ-Präsenz im RFI klären).", size=10.5, fill=LIGHT, margin=0.1)
@@ -374,7 +402,7 @@ for n, u, v, s in D.TCO_PARAM:
 rows.append(("TCO 5 Jahre", "€", *[f"{de(t['total']/1e6)} Mio." for t in T], "Summe 2027–2031"))
 table(sl, 0.4, 1.2, 12.55, 5.6, rows, [3.0, 1.15, 0.75, 0.75, 0.75, 0.75, 5.4], size=7)
 
-sl = slide("Anhang A5 – Risiken und Gegenmaßnahmen (inkl. Lehren aus „KVA neu“ 2016)", "ANHANG", "A5")
+sl = slide("Anhang A5 – Risiken und Gegenmaßnahmen (Lehren aus 2016)", "ANHANG", "A5")
 risks = [("Risiko", "Ursache 2016 / Fundstelle", "Gegenmaßnahme", "Verantwortlich"),
          ("Konfigurator nicht abbildbar", "3 Konzepte, keines umgesetzt (IT-Historie)", "PoC mit 3 realen Typenschlüsseln VOR Vertrag; Regelwerk-Owner Konstruktion (Dr. Weber)", "LK"),
          ("Key User nicht verfügbar", "Auftragsspitze 2015; Int. 05: 25 % Doppelerfassung", "20–30 % Freistellung schriftlich, Vertretung, Q4-Spitze im Plan meiden", "GF"),
@@ -404,7 +432,7 @@ sl = slide("Anhang A7 – Longlist komplett: wer warum ausscheidet (für Rückfr
 rows = [("Nr", "Produkt", "Betrieb", "Präsenz CZ", "Ergebnis", "Begründung")] + [(l[0], l[2], l[4], l[6], l[8], l[9]) for l in D.LONGLIST]
 fills = {}
 for i, l in enumerate(D.LONGLIST, 1):
-    fills[(i, 4)] = RGBColor(0xC6, 0xEF, 0xCE) if l[8].startswith("Shortlist") else RGBColor(0xFF, 0xEB, 0x9C) if l[8].startswith("Nachr") else RGBColor(0xFF, 0xC7, 0xCE)
+    fills[(i, 4)] = OK_F if l[8].startswith("Shortlist") else WARN_F if l[8].startswith("Nachr") else BAD_F
 table(sl, 0.35, 1.2, 12.65, 5.75, rows, [0.35, 2.6, 1.9, 2.4, 1.2, 4.2], size=6.8, fills=fills)
 
 sl = slide("Anhang A8 – Lizenzmodelle: was wird eigentlich bezahlt?", "ANHANG", "A8")

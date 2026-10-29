@@ -29,6 +29,7 @@ Die Skripte, mit denen die Dateien erzeugt wurden, liegen in `skripte/` (`data.p
 | Gesamtkosten hochrechnen | Folie 4, Anhang A4, XLSX Blätter 7–9 (inkl. Kosten in der Logik des Projektauftrags, Vollkosten je Nutzer) |
 | Nächste Schritte, Ausschreibung, Risiken | Folie 5, Anhang A5 + A6 |
 | Nutzwertanalyse hochladen | XLSX Blatt 6 (mit Sensitivität) |
+| HTWG-Design | Farben, Logo, Seitenzahl-Kreis und Tabellenstil wie die Vorlesungsfolien (kein Standard-Design) |
 | Management „abholen“ | Folie 5 (Tabelle je Person), Sprechernotizen zu Folie 1–5, XLSX Blatt 14 |
 | EU-Ausland / Budget | Folie 2, Anhang A10, XLSX Blatt 13; Budget auf Folie 4 und 5 |
 
